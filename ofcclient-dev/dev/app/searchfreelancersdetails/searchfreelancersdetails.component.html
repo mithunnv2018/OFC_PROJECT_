@@ -1,0 +1,372 @@
+<!--<div class="ui-g">-->
+<p-growl [value]="msgs"></p-growl>
+<div class="filter-container">
+    <!-- <div class="row">-->
+    <h2>Freelancer's Detail</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="freelancer-container-details">
+    <div class="freelancer-container-details-left">
+
+        <div class="freelancer-container-content">
+
+            <div class="freelancer-row">
+                <div class="freelancer-col-1">
+                    <div class="freelancer-col-1-user">
+                        <img src="resources/ofc/images/user-01.png" width="100%;" alt="user-01">
+                    </div>
+
+
+                </div>
+                <!--start of col 2+3-->
+                <div class="freelancer-col-2-outer">
+                    <div class="freelancer-col-2">
+                        <h2>{{freelancermember.ofcmembers_name}}</h2>
+                        <h3>{{freelancermember.ofcmembers_displayname}}</h3>
+                        <h4><span><img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"></span>                            {{freelancermember.city_name}},{{freelancermember.country_name}}
+                            <!--Thane W, India-->
+                        </h4>
+                    </div>
+
+                    <div class="freelancer-col-3-details">
+                        <h3>100 Coins</h3>
+                        <!--
+            <div class="freelancer-col-1-rating">
+            <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
+            </div>
+            -->
+                        <p-rating [(ngModel)]="freelancermember.ofcmembers_selfrating"></p-rating>
+                    </div>
+
+
+
+                    <!-- <div class="more-skils"> 
+    	<p> 5 More</p> 
+      </div>-->
+
+                </div>
+                <!--end of col 2+3-->
+
+                <div class="freelancer-col-2-details">
+                    <label> Skills </label>
+                    <div [innerHTML]="getSkillList(freelancermember.skillsarr)"></div>
+                    <!--<div class="skills">Java</div>
+            <div class="skills">J2EE</div>
+            <div class="skills">Angular JS</div>
+            <div class="skills">Node JS</div>
+            <div class="skills">Apache Struts</div>
+            <div class="skills">Javascript</div>
+            <div class="skills">HTML5</div>
+            <div class="skills">CSS3</div>-->
+                </div>
+                <div class="overview">
+                    <h4> Overview</h4>
+                    {{freelancermember.ofcmembers_description}}
+                    <!--<p> Over the last 7 years I have been involved in several performance-sensitive projects using Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.  </p>
+            <p>I also would not mind designing said application from the ground up, with performance in mind, of course.  </p>
+            <p>Last, but not least, I would be delighted to practice Haskell. </p>-->
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <!-- end of freelancer-row -->
+
+
+        </div>
+        <!-- end of freelancer-container -->
+
+        <div class="freelancer-container-content">
+            <!--container 2 starts-->
+            <div class="work-history ">
+                <h4> Work History</h4>
+
+                <p-dropdown class="filter" [options]="cities"></p-dropdown>
+
+                <!--
+             <select class="filter" >
+                <option>Newly First</option>
+                <option selected>Newly First</option>          
+                <option selected>old Work</option>                
+              </select> -->
+                <div class="clear-div"></div>
+            </div>
+            <p-dataList [value]="listofemployments" [paginator]="true" [rows]="5">
+
+                <template let-employment>
+                    <div class="work-history work-history-2nd-line">
+                        <div class="work-history-division">
+                            <h3>{{employment.ofcmememployment_name}}
+                                <!--Senior Java Developer (Passionate about quality)-->
+                            </h3>
+                            <p>100 Coins </p>
+                        </div>
+                        <div class="work-history-division">
+                            <h5>
+                                {{employment.ofcmememployment_startdate | date}} - {{employment.ofcmememployment_enddate | date}}
+                                <!--Jan 2015 - Present -->
+                            </h5>
+                            <p>
+                                {{employment.ofcmememployment_role}}
+                                <!--completed in 5 hours -->
+                            </p>
+                        </div>
+                        <h5 class="job-status">
+                            {{employment.ofcmememployment_description}}
+                            <!--Job in Progress -->
+                        </h5>
+
+
+                        <div class="freelancer-col-2-details">
+                            <label> Skills </label>
+                            <div class="skills">Java</div>
+                            <div class="skills">J2EE</div>
+                            <div class="skills">Angular JS</div>
+                            <div class="skills">Node JS</div>
+                            <div class="skills">Apache Struts</div>
+                            <div class="skills">Javascript</div>
+                            <div class="skills">HTML5</div>
+                            
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div style="clear:both"></div>    
+                </template>
+
+            </p-dataList>
+
+
+            <!--<div class="work-history work-history-2nd-line">
+                <div class="work-history-division">
+                    <h3>Senior Java Developer (Passionate about quality)</h3>
+                    <p>100 Coins </p>
+                </div>
+                <div class="work-history-division">
+                    <h5>Jan 2015 - Present </h5>
+                    <p>completed in 5 hours </p>
+                </div>
+                <h5 class="job-status">Job in Progress </h5>
+
+
+                <div class="freelancer-col-2-details">
+                    <label> Skills </label>
+                    <div class="skills">Java</div>
+                    <div class="skills">J2EE</div>
+                    <div class="skills">Angular JS</div>
+                    <div class="skills">Node JS</div>
+                    <div class="skills">Apache Struts</div>
+                    <div class="skills">Javascript</div>
+                    <div class="skills">HTML5</div>
+                </div>
+                <div style="clear:both"></div>
+            </div>-->
+
+            <!-- ***********************-->
+            <!--<div class="work-history work-history-2nd-line">
+                <div class="work-history-division">
+                    <h3>Senior Java Developer (Passionate about quality)</h3>
+                    <p>100 Coins </p>
+                </div>
+                <div class="work-history-division">
+                    <h5>Jan 2015 - Present </h5>
+                    <p>completed in 5 hours </p>
+                </div>
+                <h5 class="job-status">Job in Progress </h5>
+
+
+                <div class="freelancer-col-2-details">
+                    <label> Skills </label>
+                    <div class="skills">Java</div>
+                    <div class="skills">J2EE</div>
+                    <div class="skills">Angular JS</div>
+                    <div class="skills">Node JS</div>
+                    <div class="skills">Apache Struts</div>
+                    <div class="skills">Javascript</div>
+                    <div class="skills">HTML5</div>
+
+                </div>
+
+            </div>-->
+            <!-- ***********************-->
+            <!-- ***********************-->
+            <!--<div class="work-history work-history-2nd-line">
+                <div class="work-history-division">
+                    <h3>Senior Java Developer (Passionate about quality)</h3>
+                    <p>100 Coins </p>
+                </div>
+                <div class="work-history-division">
+                    <h5>Jan 2015 - Present </h5>
+                    <p>completed in 5 hours </p>
+                </div>
+                <h5 class="job-status">Job in Progress </h5>
+                <div class="freelancer-col-2-details">
+                    <label> Skills </label>
+                    <div class="skills">Java</div>
+                    <div class="skills">J2EE</div>
+                    <div class="skills">Angular JS</div>
+                    <div class="skills">Node JS</div>
+                    <div class="skills">Apache Struts</div>
+                    <div class="skills">Javascript</div>
+                    <div class="skills">HTML5</div>
+
+                </div>
+
+            </div>-->
+            <!-- ***********************-->
+
+        </div>
+        <!--container 2 ends-->
+
+        <!--start here of experience -->
+            <div class="freelancer-container-content">
+            <!--container 2 starts-->
+            <div class="work-history ">
+                <h4> Experience History</h4>
+
+                <p-dropdown class="filter" [options]="cities"></p-dropdown>
+
+                <!--
+             <select class="filter" >
+                <option>Newly First</option>
+                <option selected>Newly First</option>          
+                <option selected>old Work</option>                
+              </select> -->
+                <div class="clear-div"></div>
+            </div>
+
+            <p-dataList [value]="listofexperiences" [paginator]="true" [rows]="5">
+
+                <template let-experience>
+                    <div class="work-history work-history-2nd-line">
+                        <div class="work-history-division">
+                            <h3>{{experience.ofcmemexperience_name}}
+                                <!--Senior Java Developer (Passionate about quality)-->
+                            </h3>
+                            <p>100 Coins </p>
+                        </div>
+                        <div class="work-history-division">
+                            <h5>
+                                {{experience.ofcmemexperience_startdate | date}} - {{experience.ofcmemexperience_enddate | date}}
+                                <!--Jan 2015 - Present -->
+                            </h5>
+                            <p>
+                                {{experience.ofcmemexperience_role}}
+                                <!--completed in 5 hours -->
+                            </p>
+                        </div>
+                        <h5 class="job-status">
+                            {{experience.ofcmemexperience_description}}
+                            <!--Job in Progress -->
+                        </h5>
+
+
+                        <div class="freelancer-col-2-details">
+                        
+                            <label> Skills </label>
+                            <div class="skills">Java</div>
+                            <div class="skills">J2EE</div>
+                            <div class="skills">Angular JS</div>
+                            <div class="skills">Node JS</div>
+                            <div class="skills">Apache Struts</div>
+                            <div class="skills">Javascript</div>
+                            <div class="skills">HTML5</div>
+
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                    <div style="clear:both"></div>    
+
+                </template>
+
+            </p-dataList>
+
+        </div>
+        <!--container 2 ends-->
+
+        <!-- end here of expericence-->
+    </div>
+    <!-- end of freelancer-container-details-left-->
+
+    <div class="freelancer-container-details-right">
+        <div class="post-btn">Post Your Requirements</div>
+        <h3>OR</h3>
+        <div class="post-btn">Hire Me</div>
+
+        <h4>74% Job Success</h4>
+        <!--
+        <div class="profile-fill">
+        	<div class="profile-fill-percent"></div>
+        </div>
+        -->
+
+        <p-progressBar [value]="74"></p-progressBar>
+
+        <div class="freelancer-container-details-right-row">
+            <div class="freelancer-container-details-right-row-field">
+                <h3>work history</h3>
+                <p>69 Hours worked</p>
+                <p>15 Jobs</p>
+            </div>
+            <div class="freelancer-container-details-right-row-field">
+                <h3>availability</h3>
+                <p>available</p>
+                <p>less than 30hrs/week</p>
+            </div>
+            <div class="freelancer-container-details-right-row-field">
+                <h3>profile link</h3>
+                <!-- <input type="text" placeholder="http://www.ollomall.cn"> -->
+                <input type="text" pInputText placeholder="http://www.ollomall.cn">
+
+            </div>
+            <div class="freelancer-container-details-right-row-field">
+                <h3>certification</h3>
+                <p class="full-size">
+                    <span *ngFor="let item of listofcertificates">
+                            {{item.certification_name}} <br/>
+                    </span>
+ 
+                </p>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+
+
+
+        <div class="other-searches">
+            <h3>Other Searches</h3>
+            <!-- <input type="text" placeholder="Other Searches" > -->
+            <input type="text" pInputText placeholder="Other Searches">
+            <ul>
+                <li><a href="">Sun Certified Professionals</a></li>
+                <li><a href="">Microsoft Certified Professionals</a></li>
+                <li><a href="">Google Certified</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div style="clear:both"></div>
+
+
+</div>
+<!-- end of freelancer-container-details -->
+<div class="filter-container">
+    <div class="freelancer-back-btn">
+        <a [routerLink]="['/searchfreelancers']" > <span class="freelancer-back-btn-span"> &lt; </span> Back to search result</a>
+    </div>
+</div>
+
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

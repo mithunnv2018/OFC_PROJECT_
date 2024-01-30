@@ -1,0 +1,150 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="container">    						<!-- Container block Starts third -->
+ 													<!--****coloumn left*****-->
+          <sd-commonsettings [pagetype]="'purchasecoins'"></sd-commonsettings>							<!--****coloumn left*****-->
+         											        
+                                                            <!--****coloumn Right*****-->
+         <div class="membership"> 
+        	
+          	<h2>Membership & Coins</h2>
+			
+           <!-- *****************************************************************************************-->
+      <div class="membership-block">
+ 			<div class="work-history work-history-2nd-line membersip-pricing"> 
+                	<h4>Available coins</h4>
+                <div class="available-coins">
+                    <div class="available-coins-left">
+                        <div class="available-coins-circle">
+                            <span style="text-align:center;position:relative; top:30%; ">{{sumOfCoins}}</span>
+                        </div> 
+                    </div>
+             		 <div class="available-coins-right">
+                       
+                        <div class="report-table">	
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Client</th>
+                                    <th>Applicant</th>
+                                    <th>Coins</th>
+                                    <th>Amount</th>
+                                    <th>Balance</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="report-details" *ngFor="let transaction of transactionGrid">
+                                    <td>{{transaction.ofcmemplan_startdate | date}}</td>
+                                     <td>{{transaction.ofcmemplan_description}}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+             		</div>                         <!--*******right closed*******-->
+  			 <div class="clear-div"></div>           					                                                
+		</div>								<!--*******************available-coins**************-->
+	</div>
+   									<!--*******************work-history  membersip-pricing ***********************-->
+                                    
+                                    
+                                    
+ <div class="work-history work-history-2nd-line membersip-pricing"> 
+                	<h4> Plan Details</h4>
+                <div class="plan-detail-main-block">
+                   <div class="plan-details">
+                   		<div class="plan-details-left"> 
+                        	<p>Currency</p>
+                        </div>
+                        <div class="plan-details-right"> 
+                        <p-dropdown [style]="{width:'200px'}" autoWidth="false" [(ngModel)]='memberplan.ofcmemplan_currency' [options]="drpCurrency"></p-dropdown>
+
+                        </div>
+                   </div> 
+                   
+                   <div class="plan-details">
+                   		<div class="plan-details-left"> 
+                        	<p>Plan Name</p>
+                        </div>
+                        <div class="plan-details-right"> 
+                        <p-dropdown [style]="{width:'200px'}" autoWidth="false" [options]="drpPlan" (onChange)="populatePlanDetails($event)"></p-dropdown>
+                        </div>
+                   </div>
+                   
+                    <div class="plan-details">
+                   		<div class="plan-details-left"> 
+                        	<p>Plan Cost</p>
+                        </div>
+                        <div class="plan-details-right"> 
+                        	<p>{{plan.plan_rate}}</p>
+                        </div>
+                   </div>
+                   
+                    <div class="plan-details">
+                   		<div class="plan-details-left"> 
+                        	<p>Cupon Code</p>
+                        </div>
+                        <div class="plan-details-right  plan-details-right-border" > 
+                        	<p><input pInputText type='text' [(ngModel)]='memberplan.ofcmemplan_coupon' /></p>
+                        </div>
+                   </div>
+                   
+                   <div class="plan-details">
+                   		<div class="plan-details-left"> 
+                        	<p>Discount Amount</p>
+                        </div>
+                        <div class="plan-details-right"> 
+                        	<p><input pInputText type='text' [(ngModel)]='memberplan.ofcmemplan_discount' /></p>
+                        </div>
+                   </div>
+                   
+                   <div class="plan-details plan-details-color ">
+                   		<div class="plan-details-left"> 
+                        	<p>PayableAmount</p>
+                        </div>
+                        <div class="plan-details-right"> 
+                        	<p>{{plan.plan_rate}}</p>
+                        </div>
+                   </div>
+             		                         
+  			           					                                                
+				</div>								<!--*******************available-coins**************-->
+	</div>
+   								<!--*******************work-history  membersip-pricing ***********************-->
+  </div> 
+ 						
+ 
+ 
+ 					<!--*******************payment getway***********************-->
+          <div class="payment-getway">
+            <div class="payment-getway-inner-block">
+                <h4>Payment Method</h4>
+            </div>
+            <div class="payment-getway-inner-block">
+                    <!--<center>-->
+                    <div class="payment-logo"><a href=""> <img src="resources/ofc/images/paypal.jpg" /></a></div>
+                    <div class="payment-logo"> <a href=""> <img src="resources/ofc/images/yandexmoney.jpg" /> </a> </div> 
+                    <div class="payment-logo"><a href=""> <img src="resources/ofc/images/qiwi-wallet.jpg" /></a></div>
+                    <div class="payment-logo"><a href=""> <img src="resources/ofc/images/ccavenue.jpg" /></a></div>
+                    <div class="payment-logo"><a href=""> <img src="resources/ofc/images/payssion.jpg" /></a></div>
+                  <!--</center>-->
+              <div class="clear-div"></div>
+         </div>
+ 				 					<!--*******************payment getway***********************-->
+ </div>	  
+
+<div class="for-button">
+        <div class="post-btn">
+            <button pButton  (click)="savePlan()" label="Pay Now" ></button>
+           
+            </div>
+    </div> 
+</div> 
+<div class="clear-div"></div>
+</div>
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

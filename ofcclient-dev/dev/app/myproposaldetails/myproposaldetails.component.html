@@ -1,0 +1,267 @@
+<div class="freelancer-after-login-header">
+    <ul>
+        <li><a href="javascript:void(0);"> Saved Jobs</a> </li>
+        <li><a href="javascript:void(0);" class="active"> Proposals </a></li>
+        <li><a href="javascript:void(0);"> Profile</a></li>
+    </ul>
+    <!-- <div style="clear:both"></div>-->
+</div>
+<div *ngIf="myproposaldetails">
+    <div class="freelancer-container">
+
+        <div class="proposal">
+            <h2>{{myproposaldetails.ofcprojectpost_title}}</h2>
+            <div class="proposal-row">
+                <div class="proposal-cols">
+                    <h3>Experience Level</h3>
+                    <p>Entry Level (Coins)</p>
+                </div>
+
+                <div class="proposal-cols">
+                    <h3>Job Duration</h3>
+                    <p>More than 6 months</p>
+                </div>
+
+                <div class="proposal-cols">
+                    <h3>About Client</h3>
+                    <p>Payment Method Verified</p>
+                </div>
+
+                <div class="proposal-cols">
+                    <h3>Job Posted</h3>
+                    <p>4 Job Posted</p>
+                </div>
+
+                <div class="proposal-cols">
+                    <h3>Successful Jobs Rate</h3>
+                    <p>10% Hire Rate</p>
+                </div>
+
+                <div class="proposal-cols">
+                    <h3>Client Active</h3>
+                    <p>Since Dec 6, 2015</p>
+                </div>
+
+            </div>
+            <!-- end of proposal-row -->
+
+            <div class="proposal-description">
+                <h3>Job Description</h3>
+                <p>{{myproposaldetails.ofcprojectpost_description}}</p>
+
+                <div class="freelancer-col-2-details">
+                    <label>Skills Required </label>
+                    <div [innerHTML]="getSkillList(myproposaldetails.skillsarr)"></div>
+                </div>
+            </div>
+            <!-- end of proposal description -->
+
+        </div>
+    </div>
+    <!-- end of freelancer-container-->
+
+
+
+
+    <div class="freelancer-container">
+        <div class="proposal">
+            <h2>{{myproposaldetails.ofcprojectpost_title}}</h2>
+            <p><b>You are submitting proposal as a Freelancer</b></p>
+
+            <div class="proposal-terms">
+                <div class="proposal-terms-col">
+                    <h3>Proposal Rate</h3>
+                    <p>This is the amount the client will see on your proposal</p>
+                </div>
+                <div class="proposal-terms-col">
+                    {{myproposaldetails.ofcsubmitproposal_budget}}
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div class="proposal-terms">
+                <div class="proposal-terms-col">
+                    <h3>{{myproposaldetails.ofcsubmitproposal_commissionpercentage}}% OFC</h3>
+                    <p>Service Fee</p>
+                </div>
+                <div class="proposal-terms-col">
+                    {{myproposaldetails.ofcsubmitproposal_commissionamount}}
+
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div class="proposal-terms">
+                <div class="proposal-terms-col">
+                    <h3>You'll Receive</h3>
+                    <p>The estimated amount you'll receive after service fees.</p>
+                </div>
+                <div class="proposal-terms-col">
+                    {{myproposaldetails.ofcsubmitproposal_finalamount}}
+
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <!-- as done on 21 jan 2017 by Mandar for time frame n time commitment-->
+            <div class="employee-after-login-details">
+                <!--<h3>How many freelancers do you need to hire?</h3>-->
+                <h3>How much time duration do you need?</h3>
+
+
+                <div class="popular-search-block" (click)="selectTimeFrame('1 Day or Few Hours')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='1 Day or Few Hours'}">
+                    <p> 1 Day or </p>
+                    <p>Few Hours</p>
+                </div>
+
+                <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Week')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='3 to 6 Week'}">
+                    <p> 3 to 6 </p>
+                    <p>Week</p>
+                </div>
+
+                <div class="popular-search-block" (click)="selectTimeFrame('Less than 1 Month')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='Less than 1 Month'}">
+                    <p> Less than </p>
+                    <p>1 Month</p>
+                </div>
+
+                <div class="popular-search-block" (click)="selectTimeFrame('1 to 3 Months')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='1 to 3 Months'}">
+                    <p> 1 to 3 </p>
+                    <p>Months</p>
+                </div>
+
+                <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Months')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='3 to 6 Months'}">
+                    <p> 3 to 6 </p>
+                    <p>Months</p>
+                </div>
+
+                <div class="popular-search-block" (click)="selectTimeFrame('More than 6 Months')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_timeframe=='More than 6 Months'}">
+                    <p> More than </p>
+                    <p>6 Months</p>
+                </div>
+
+            </div>
+
+            <div class="employee-after-login-details" style="width:100%">
+                <h3>What time commitment is require for this job </h3>
+
+                <!--<div class="skills"> <span> More than 3 months </span> <img src="resources/ofc/images/time-select.png" width="10%" style="vertical-align:middle;"> </div>-->
+                <div class="popular-search-block desired-experience-level" (click)="selectCommitment('More than 30 hours / week')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_availability=='More than 30 hours / week'}">
+                    <span>More than 30 hours / week </span>
+                    <img src="resources/ofc/images/time-select.png" style="vertical-align:middle">
+                </div>
+                <div class="popular-search-block desired-experience-level" (click)="selectCommitment('Less than 30 hours / week')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_availability=='Less than 30 hours / week'}">
+                    <span> Less than 30 hours / week</span>
+                    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+                </div>
+                <div class="popular-search-block desired-experience-level" (click)="selectCommitment('I don\'t know yet')" [ngClass]="{'popular-active': myproposaldetails.ofcsubmitproposal_availability=='I don\'t know yet'}">
+                    <span>I don't know yet</span>
+                    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+                </div>
+            </div>
+
+
+            <div class="employee-after-login-details">
+                <h3>Cover Letter</h3>
+
+
+
+                <div class="characters-left">
+                    <p> 1000 characters left </p>
+                </div>
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3>Terms</h3>
+
+
+                <div class="characters-left">
+                    <p> 1000 characters left </p>
+                </div>
+            </div>
+            <!-- end of employee-after-login-details -->
+            <div *ngFor="let item of projectpostquestionsArr,let i=index">
+                <div class="employee-after-login-details">
+                    <h3>{{item.projectpostquestions_name}}</h3>
+
+                    <div class="characters-left">
+                        <p> 1000 characters left </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="acc-attachment">
+                <h3>
+                    <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+                <p>The file is upto 5MB in size</p>
+            </div>
+
+
+            <div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+                    <div class="ui-g-12 ui-md-4" style="width:100%;">
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- as done on 21 jan 2016 by Mandar for estimate start data-->
+            <div class="employee-after-login-details">
+                <h3>Start Date</h3>
+                <ng-container ng-if="myproposaldetails.ofcsubmitproposal_estimatestartdate">
+                    {{myproposaldetails.ofcsubmitproposal_estimatestartdate | date}}</ng-container>
+            </div>
+
+
+        </div>
+        <!--- end of proposal -->
+    </div>
+    <!-- end of freelancer-container-->
+
+
+    <div class="container">
+        <p style="color:#f17023;"><b>CHAT NOW</b></p>
+        <div class="acc_content">
+
+            <ng-container *ngFor="let users2 of listofusers; let i = index;">
+                <div class="acc-sub-head" id="acc-sub-head">
+                    <div class="acc-img"><img src="resources/ofc/images/login-user.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name">{{users2.username}}</div>
+                    <div class="acc-chat"><img src="resources/ofc/images/chat-online.png" style="vertical-align:middle;"></div>
+                </div>
+                <div class="acc_inner-content" id="acc-sub-details">
+                    <div class="chat-enter-text">
+
+                        <p class="chat-receiver"><span class="receiver">Hello, Good morning</span></p>
+                        <p class="chat-sender"><span class="sender">Hello, Good morning</span></p>
+                        <p class="chat-receiver"><span class="receiver">How are you?</span></p>
+                        <p class="chat-sender"><span class="sender">I am good, and you?</span></p>
+                        <p class="chat-sender"><span class="sender">What are you doing now?</span></p>
+                        
+                        <ng-container *ngIf="listofoldchats[i]">
+                                <ng-container  *ngFor="let itemold of listofoldchats[i].messages; let k = index;">
+                                    <p [ngClass]="{'chat-sender': itemold.author==users2.author,'chat-receiver': itemold.author!=users2.author}">
+                                        <span [ngClass]="{'sender': itemold.author==users2.author,'receiver': itemold.author!=users2.author}">{{itemold.message}}</span></p>
+                                </ng-container>
+                        </ng-container>
+
+                        <ng-container *ngFor="let item of users2.messages; let j = index;">
+                            <p [ngClass]="{'chat-sender': item.author==ownchatid,'chat-receiver': item.author!=ownchatid}">
+                                <span [ngClass]="{'sender': item.author==ownchatid,'receiver': item.author!=ownchatid}">{{item.message}}</span></p>
+                        </ng-container>
+                    </div>
+                    <div class="chat-text-type">
+                        <div class="chat-write"><input (keyup.enter)="onSubmitChat(i,users2.otherauthor)" [(ngModel)]="users2.message" type="text" placeholder="write a message here..."></div>
+                        <div class="send-message-btn" (click)="onSubmitChat(i,users2.otherauthor)"><img src="resources/ofc/images/send-message.png"></div>
+                    </div>
+                </div>
+            </ng-container>
+
+
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

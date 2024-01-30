@@ -1,0 +1,364 @@
+<sd-commonsubmenu [pagetype]="'submitproposal'"></sd-commonsubmenu>
+
+<div class="filter-container">
+    <!--<div class="row">-->
+    <h2>My Proposal</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="freelancer-container">
+    <div class="proposal">
+        <h2>Offers</h2>
+        <ng-container *ngIf="!(submittedProposalList?.length>0)">
+                <p>You haven't submitted for any offers yet. Please search for your appropriate offers</p>
+        </ng-container>                 
+
+        <div class="proposal-row proposal-bottom" *ngFor="let subProposal of submittedProposalList" (click)="onRowSelect(subProposal.ofcsubmitproposal_id)">
+            <div class="proposal-cols">
+                <h3>{{subProposal.createdate | date}}</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large">
+                <div class="work-history work-history-2nd-line">
+                    <div class="work-history-division post-job-right-block-hedding">
+                        <h3>{{subProposal.ofcprojectpost_title}}</h3>
+                        <span><img src="resources/ofc/images/dislike.png" style="vertical-align:middle;"> <img src="resources/ofc/images/like.png" style="vertical-align:middle;"> </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+
+                    <p class="p1">Hourly - {{subProposal.experience_name}} - Est. Time: {{subProposal.ofcprojectpost_timeframe}} - Posted
+                        {{subProposal.projectpostdate | date}} </p>
+
+
+                    <p class="p2">{{subProposal.ofcprojectpost_description}} <a href="javascript:void(0);">read more</a> </p>
+
+                    <div class="freelancer-col-2-details">
+                        <label> Skills Required </label>
+                        <div [innerHTML]="getSkillList(subProposal.skillsarr)"> </div>
+                    </div>
+
+                    <div class="client-payment-status">
+                        <div class="payment-status-inner-blocks">
+                            <span>Client:</span>Payment Varified
+                        </div>
+                        <div class="payment-status-inner-blocks">
+                            <div class="freelancer-col-1-rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                        title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
+                                        for="star4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                        title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
+                                        for="star3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                        title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
+                                        for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                        title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
+                                        for="star1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                        title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf"
+                                        title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <span> Less than </span> {{subProposal.ofcprojectpost_budget}} spent
+                            <span> My Bid </span> {{subProposal.ofcsubmitproposal_budget}} bid.
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"><span>India</span>
+                        </div>
+                    </div>
+                </div>
+                <!--*********************************************************************-->
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+    </div>
+</div>
+
+
+<div class="freelancer-container">
+    <div class="proposal">
+        <h2>Active Candidates</h2>
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Senior Java Developer (passionate about quality)</h3>
+                <p class="p2">Fixed Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Email Login Checker Neded ASAP !</h3>
+                <p class="p2">52 Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+    </div>
+    <!-- end of proposal -->
+</div>
+<!-- end of freelancer-container-->
+
+
+<div class="freelancer-container">
+    <div class="proposal">
+        <h2>Invitation to interview</h2>
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large">
+                <div class="work-history work-history-2nd-line">
+                    <div class="work-history-division post-job-right-block-hedding">
+                        <h3>Full-Stack PHP Developer</h3>
+                        <span><img src="resources/ofc/images/dislike.png" style="vertical-align:middle;"> <img src="resources/ofc/images/like.png" style="vertical-align:middle;"> </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+
+                    <p class="p1">Hourly - Entry Level (coins) - Est. Time: Less than 1 week, 10-30 hrs/week - Posted 11 minutes ago </p>
+
+                    <p class="p2">I have been working in Java for last 10 years. Java expertise: - J2EE Expertise 15 years Spring Expertise
+                        4 years Hibernate Expertise 5 years Struts Expertise 5 years Angular.JS... <a href="javascript:void(0);">read more</a>                        </p>
+
+                    <div class="freelancer-col-2-details">
+                        <label> Skills Required </label>
+                        <div class="skills">Java</div>
+                        <div class="skills">J2EE</div>
+                        <div class="skills">Angular JS</div>
+                        <div class="skills">Node JS</div>
+                        <div class="skills">Apache Struts</div>
+                        <div class="skills">Javascript</div>
+                        <div class="skills">HTML5</div>
+                    </div>
+
+                    <div class="client-payment-status">
+                        <div class="payment-status-inner-blocks">
+                            <span>Client:</span>Payment Varified
+                        </div>
+                        <div class="payment-status-inner-blocks">
+                            <div class="freelancer-col-1-rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                        title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
+                                        for="star4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                        title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
+                                        for="star3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                        title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
+                                        for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                        title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
+                                        for="star1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                        title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf"
+                                        title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <span> Less than </span> 100 Coins spent
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"><span>India</span>
+                        </div>
+                    </div>
+                </div>
+                <!--*********************************************************************-->
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large">
+                <div class="work-history work-history-2nd-line">
+                    <div class="work-history-division post-job-right-block-hedding">
+                        <h3>Full-Stack PHP Developer</h3>
+                        <span><img src="resources/ofc/images/dislike.png" style="vertical-align:middle;"> <img src="resources/ofc/images/like.png" style="vertical-align:middle;"> </span>
+                        <div style="clear:both"></div>
+                    </div>
+
+
+                    <p class="p1">Hourly - Entry Level (coins) - Est. Time: Less than 1 week, 10-30 hrs/week - Posted 11 minutes ago </p>
+
+                    <p class="p2">I have been working in Java for last 10 years. Java expertise: - J2EE Expertise 15 years Spring Expertise
+                        4 years Hibernate Expertise 5 years Struts Expertise 5 years Angular.JS... <a href="javascript:void(0);">read more</a>                        </p>
+
+                    <div class="freelancer-col-2-details">
+                        <label> Skills Required </label>
+                        <div class="skills">Java</div>
+                        <div class="skills">J2EE</div>
+                        <div class="skills">Angular JS</div>
+                        <div class="skills">Node JS</div>
+                        <div class="skills">Apache Struts</div>
+                        <div class="skills">Javascript</div>
+                        <div class="skills">HTML5</div>
+                    </div>
+
+                    <div class="client-payment-status">
+                        <div class="payment-status-inner-blocks">
+                            <span>Client:</span>Payment Varified
+                        </div>
+                        <div class="payment-status-inner-blocks">
+                            <div class="freelancer-col-1-rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                        title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
+                                        for="star4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                        title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
+                                        for="star3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                        title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
+                                        for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                        title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
+                                        for="star1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                        title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf"
+                                        title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <span> Less than </span> 100 Coins spent
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"><span>India</span>
+                        </div>
+                    </div>
+                </div>
+                <!--*********************************************************************-->
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+    </div>
+    <!-- end of proposal -->
+</div>
+<!-- end of freelancer-container -->
+
+<div class="freelancer-container">
+    <div class="proposal">
+        <h2>Submitted Proposals</h2>
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Senior Java Developer (passionate about quality)</h3>
+                <p class="p2">Fixed Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Email Login Checker Neded ASAP !</h3>
+                <p class="p2">52 Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Senior Java Developer (passionate about quality)</h3>
+                <p class="p2">52 Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Email Login Checker Neded ASAP !</h3>
+                <p class="p2">52 Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+        <div class="proposal-row proposal-bottom">
+            <div class="proposal-cols">
+                <h3>October 04, 2016</h3>
+                <p>20 Days ago</p>
+            </div>
+            <div class="proposal-cols-large active-candidate">
+                <h3>Senior Java Developer (passionate about quality)</h3>
+                <p class="p2">52 Coins</p>
+            </div>
+        </div>
+        <!-- end of proposal-row -->
+
+    </div>
+    <!-- end of proposal -->
+
+    <div class="post-job-list-paggination pagin-col-1">
+        <div class="pagination pagin-col-2">
+            <ul>
+                <li>Previous</li>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>Next</li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear-div"></div>
+</div>
+<!--Container close-->
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

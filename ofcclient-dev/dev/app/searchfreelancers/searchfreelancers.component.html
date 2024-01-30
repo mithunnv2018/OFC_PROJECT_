@@ -1,0 +1,165 @@
+<!--<div class="ui-g">-->
+<p-growl [value]="msgs"></p-growl>
+<div class="filter-container">
+    <!-- <div class="row">-->
+    <h2>Search Freelancer</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="filter-container">
+    <div class="row">
+        <label>Category</label>
+        <p-selectButton class="mymultiselectbutton" [options]="subcat" [(ngModel)]="selectedTypesubcat" (click)="subcatClick($event)"></p-selectButton>
+
+        <!--<nav>
+            <ul>
+                <li><a href="#" class="active">Company Research</a></li>
+                <li><a href="#">Trademarks and Patents</a></li>
+                <li><a href="#">Telemarketing</a></li>
+                <li><a href="#">Article Writer</a></li>
+                <li><a href="#">Factory</a></li>
+                <li><a href="#">Promotional Videos </a></li>
+            </ul>
+        </nav>-->
+    </div>
+
+    <div class="row">
+        <label>Labels</label>
+        <p-selectButton class="mymultiselectbutton" [options]="keyword" [(ngModel)]="selectedTypeskeyword" ></p-selectButton>
+        <!--<nav class="labels">
+            <ul>
+                <li><a href="#" class="active">Accenture</a></li>
+                <li><a href="#">Deliotte</a></li>
+                <li><a href="#">Capegemini</a></li>
+                <li><a href="#">L and T Infotech</a></li>
+                <li><a href="#">Tech-Mahindra</a></li>
+                <li><a href="#">TCS</a></li>
+            </ul>
+        </nav>-->
+    </div>
+
+    <div class="filter">
+        <!--
+        <select>
+            <option>Language</option>
+            <option>English</option>
+            <option>Chinees</option>
+            <option>Japnees</option>
+        </select>
+        -->
+        <p-dropdown [style]="{'width':'90%'}" [options]="drpLanguageId" [(ngModel)]="selectedLanguage" [filter]="true">
+            
+        </p-dropdown>
+
+</div>
+
+<div class="filter">
+    <!--
+        <select>
+            <option>Country</option>
+            <option>English</option>
+            <option>Chinees</option>
+            <option>Japnees</option>
+        </select>
+        -->
+    <p-dropdown [style]="{'width':'90%'}" [options]="drpCountryId" [filter]="true"  [(ngModel)]="selectedCountry">
+        <!--<template let-city>
+            <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+<div style="font-size:14px;float:right;margin-top:4px"></div>
+</div>
+</template>-->
+</p-dropdown>
+</div>
+
+<div class="filter">
+    <!--
+        <select>
+            <option>Price</option>
+            <option>>0 Coins</option>
+            <option>>100 Coins</option>
+            <option>>1000 Coins</option>
+            <option>>2000 Coins</option>
+        </select>
+        -->
+    <p-dropdown [style]="{'width':'90%'}" [options]="pricerange" [filter]="true">
+         
+</p-dropdown>
+</div>
+
+<div class="filter">
+    <!--
+        <select>
+            <option>Date</option>
+            <option>Recent Posted Jobs</option>
+            <option>Old Posted Jobs</option>
+        </select>
+        -->
+    <p-dropdown [style]="{'width':'90%'}" [options]="daterange" [filter]="true">
+        <!--<template let-city>
+            <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+<div style="font-size:14px;float:right;margin-top:4px"></div>
+</div>
+</template>-->
+</p-dropdown>
+</div>
+</div>
+
+<div class="freelancer-container">
+    <!--start datalist-->
+    <p-dataList [value]="freelancermembers" [paginator]="true" [rows]="5">
+        <!--<header>
+        List of Search result
+    </header>-->
+        <template let-searchfreelancer>
+            <div class="freelancer-row" (click)="onRowSelect(searchfreelancer)">
+                <div class="freelancer-col-1">
+                    <div class="freelancer-col-1-user">
+                        <img src="resources/ofc/images/user-01.png" width="100%;" alt="user-01">
+                    </div>
+                    <h3>100 Coins</h3>
+                    <div class="freelancer-col-1-rating">
+                        <p-rating [(ngModel)]="searchfreelancer.ofcmembers_selfrating"></p-rating>
+                        
+                    </div>
+
+                </div>
+
+                <div class="freelancer-col-2">
+                    <h2>{{searchfreelancer.ofcmembers_name}}</h2>
+                    <h3>{{searchfreelancer.ofcmembers_displayname}}</h3>
+                    <h4><span><img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"></span>
+                    {{searchfreelancer.city_name}},{{searchfreelancer.country_name}}
+                    <!--Thane W, India-->
+                    </h4>
+<p>{{searchfreelancer.ofcmembers_description}} 
+    <!--I have been working in Java for last 10 years. Java expertise: - J2EE Expertise 15 years Spring Expertise 4 years Hibernate
+    Expertise 5 years Struts Expertise 5 years Angular.JS... -->
+    <a class="read-more" href="javascript:void(0);">read more</a>
+    
+</p>
+
+</div>
+
+<div class="freelancer-col-3">
+    <div  [innerHTML]="getSkillList(searchfreelancer.skillsarr)"></div>
+    <!--	<center> -->
+    <!--<div *ngFor="let skill2 of searchfreelancer.skillList" class="skills">{{skill2}}</div>-->
+    <!--<div class="skills">Java</div>
+    <div class="skills">J2EE</div>
+    <div class="skills">Angular JS</div>
+    <div class="skills">Node JS</div>
+    <div class="skills">Apache Struts</div>
+    <div class="skills">Javascript</div>
+    <div class="skills">HTML5</div>
+    <div class="skills">CSS3</div>
+    <div class="skills">Javascript</div>-->
+    <!--	</center> -->
+</div>
+<div style="clear:both"></div>
+</div>
+</template>
+</p-dataList>
+</div>
+<!--end data list-->
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

@@ -1,0 +1,55 @@
+                                                                           
+<div class="filter-container">
+   <!-- <div class="row">-->
+        <h2>Notifications</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="freelancer-container">
+	<div class="report-table">
+
+
+		 <p-dataTable [value]="notificationgrid" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+        [(selection)]="selectedRow">
+        <p-column field="" [filter]="true" filterPlaceholder="Job Title" header="Job Title"></p-column>
+        <p-column field="" [filter]="true" filterPlaceholder="Status" header="Status"></p-column>
+        <p-column field="" [filter]="true" filterPlaceholder="Reason" header="Reason"></p-column>
+        <p-column field="" [filter]="true" filterPlaceholder="Action" header="Action"></p-column>
+         </p-dataTable>	
+	<!--<table>
+		<thead>
+		<tr>
+			<th>Job Title</th>
+			<th>Status</th>
+			<th>Reason</th>
+            <th>Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="report-details">
+			<td>
+            	<h3>Senior Java Developer (passionate about quality)</h3>
+                <p>Start From <span> 12-10-2016</span> To <span> 10-11-2016 </span></p>
+            </td>
+			<td>completed</td>
+			<td>-</td>
+            <td><a href="freelancer-page-my-proposal.html">View</a></td>
+		</tr>
+        
+		<tr class="report-details">
+		  <td>          	
+            <h3>Email Login Checker Neded ASAP !</h3>
+            <p>Start From <span> 12-10-2016</span> To <span> 10-11-2016 </span></p>
+          </td>
+		  <td>Declined</td>
+		  <td>Awarded to other  </td>
+          <td><a href="freelancer-page-my-proposal.html">View</a></td>
+		</tr>
+		</tbody>
+	</table>-->
+
+	</div>
+    
+<div style="clear:both"></div>
+</div>

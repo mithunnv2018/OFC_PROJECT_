@@ -1,0 +1,122 @@
+<div class="freelancer-after-login-header">
+    <ul>
+        <li><a href="javascript:void(0);"> Saved Jobs</a> </li>
+        <li><a href="javascript:void(0);"> Proposals </a></li>
+        <li><a href="javascript:void(0);" class="active"> Profile</a></li>
+    </ul>
+    <!-- <div style="clear:both"></div>-->
+</div>
+<!-- </div>-->
+
+<div class="container">
+    <!-- Container block Starts third -->
+    <!--****coloumn left*****-->
+    <sd-commonsettings [pagetype]="'membershipcoins'"></sd-commonsettings>
+    <!--****coloumn left*****-->
+
+    <!--****coloumn Right*****-->
+    <div class="membership">
+
+        <h2>Membership & Coins</h2>
+
+        <!-- *****************************************************************************************-->
+        <div class="membership-block">
+            <div class="work-history work-history-2nd-line">
+                <!--<div class="container">-->
+                <!----------------Container block Starts fifth-------------------->
+                <h4>Pricing & Level</h4>
+                <div class="pricing-n-level-right">
+                    <div class="how-it-works-block" *ngFor="let plan of planGrid">
+                        <h2>{{plan.plan_name}}</h2>
+                        <h4>{{plan.plan_bidsnos}} Bids/month</h4>
+                        <h5>Job Fee {{plan.plan_feespercentage}} %</h5>
+
+                        <button class="button-center">Buy Now</button>
+                        <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin
+                            your project.</p>
+
+                    </div>
+
+                </div>
+                <div class="clear-div"></div>
+
+                <!--  </div>-->
+
+            </div>
+            <!--*********************************************************************-->
+
+            <div class="work-history work-history-2nd-line membersip-pricing">
+                <h4>Available coins</h4>
+                <div class="available-coins">
+                    <div class="available-coins-left">
+                        <div class="available-coins-circle">
+                            <span style="text-align:center;position:relative; top:30%; ">{{sumOfCoins}}</span>
+                        </div>
+                    </div>
+                    <div class="available-coins-right">
+                        <div class="report-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Client</th>
+                                        <th>Aplicant</th>
+                                        <th>Coins</th>
+                                        <th>Amount</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="report-details" *ngFor="let transaction of transactionGrid">
+                                        <td>{{transaction.ofcmemplan_startdate | date}}</td>
+                                        <td>{{transaction.ofcmemplan_description}}</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!--*******right closed*******-->
+                    <div class="clear-div"></div>
+                </div>
+                <!--*******************available-coins**************-->
+            </div>
+            <!--*******************work-history  membersip-pricing ***********************-->
+
+            <div class="work-history work-history-2nd-line membersip-pricing">
+                <h4>Membership Fee</h4>
+                <div class="membership-fee">
+
+                    <h3>{{activePlan.plan_name}}</h3>
+                    <h4>{{activePlan.plan_bidsnos}} Bids/month</h4>
+                    <h5>Job Fee {{activePlan.plan_feespercentage}} %</h5>
+
+                    <p>{{activePlan.ofcmemplan_description}}</p>
+                  <!--  <h3>OFC Basic</h3>
+                    <h4>30 Bids/month</h4>
+                    <h5>Job Fee 8.25%</h5>
+
+                    <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your
+                        project.</p>-->
+                </div>
+                <!--         <div class="clear-div"></div>-->
+                <!--*******************membership-coins**************-->
+            </div>
+
+            <div class="work-history work-history-2nd-line membersip-pricing">
+                <h4>Current Billing Cycle </h4>
+                <p>{{activePlan.ofcmemplan_startdate | date}} - {{activePlan.ofcmemplan_startdate | date}}</p>
+                <button class="button-center">Renew</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="clear-div"></div>
+</div>
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

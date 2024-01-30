@@ -1,0 +1,101 @@
+
+<div class="freelancer-after-login-header">
+       <ul>
+             <li><a href="javascript:void(0);">Transaction History</a> </li>
+            <li><a href="javascript:void(0);" class="active"> Lifetime Billing </a></li>
+        </ul>
+   <!-- <div style="clear:both"></div>-->
+</div>  
+<!-- </div>-->                                                                           
+                                                                            
+<div class="filter-container">
+    <!--<div class="row">-->
+        <h2>Lifetime Billing With Client</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="freelancer-container">
+
+<div class="reports-two-cols">
+	<div class="col-first">
+    	<h3>From <p-calendar [showIcon]="true"   dateFormat="mm/dd/yy" ></p-calendar>
+             To <p-calendar [showIcon]="true"   dateFormat="mm/dd/yy" ></p-calendar> </h3>
+    </div>
+    
+    <div class="col-second">
+    	<h3>Balance : <span>1500 Coins</span></h3>
+    </div> 
+    <div style="clear:both"></div>   
+</div>
+
+<div class="report-table">	
+
+
+     <p-dataTable [value]="transactionhistorygrid" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelect($event)"
+        [(selection)]="selectedRow">
+     <!--   <p-column field="country_name" [filter]="true" filterPlaceholder="Job Title" header="Job Title"></p-column>
+        <p-column field="state_name" [filter]="true" filterPlaceholder="Offers" header="Offers"></p-column>
+        <p-column field="city_name" [filter]="true" filterPlaceholder="Status" header="Status"></p-column>
+        <p-column field="city_aliasname" [filter]="true" filterPlaceholder="Action" header="Action"></p-column>-->
+         </p-dataTable>
+
+<!--	<table>
+		<thead>
+		<tr>
+			<th>Job Title</th>
+			<th>Project Category</th>
+			<th>Client</th>
+			<th>Monthly Cost</th>
+			<th>Paid</th>
+			<th>Pending</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="report-details">
+			<td>
+            	<h3>Senior Java Developer (passionate about quality)</h3>
+            	<p>Start From <span>02/10/2016</span> To <span>20/10/2016</span></p>
+            </td>
+			<td>IT-Software</td>
+			<td>John D</td>
+			<td>1400 Coins</td>
+			<td>500 Coins <p>Date: 02/10/2016</p></td>
+			<td>900 Coins</td>
+		</tr>
+        
+		<tr class="report-details">
+		  <td>          	
+            <h3>Email Login Checker Neded ASAP !</h3>
+            <p>Start From <span>02/10/2016</span> To <span>20/10/2016</span></p>
+          </td>
+		  <td>IT-Software</td>
+		  <td>Peter J</td>
+		  <td>1200 Coins</td>
+		  <td>600 Coins <p>Date: 02/10/2016</p></td>
+		  <td>600 Coins</td>
+		</tr>
+		</tbody>
+	</table>-->
+	
+	</div>
+    
+<div class="statement-col">
+   <h3>Statement Period</h3>
+   <p>01 September 2016 To 26 October 2016</p>
+   <div class="statement-row">
+   		<h4>Begining Balance</h4><p>0.00 Coins</p>
+	</div> 
+    
+    <div class="statement-row">
+   		<h4>Total Debits</h4><p>1100.00 Coins</p>
+	</div>  
+    
+    <div class="statement-row">
+   		<h4>Ending Balance</h4><p>1500.00 Coins</p>
+	</div>    
+   
+</div>
+    
+<div style="clear:both"></div>
+</div>

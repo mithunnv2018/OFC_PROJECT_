@@ -1,0 +1,63 @@
+<div class="logmod">
+    <p-growl [value]="msgs"></p-growl>
+<h1>Log in and get to work</h1>
+  	  <div class="logmod__wrapper">
+            
+              <form class="login" [formGroup]="userform">                
+              <div><input pInputText type="text" placeholder="Username" [(ngModel)]="loginpage.username" formControlName="username"/>
+                
+                  
+              
+              </div>
+              <div *ngIf="!userform.controls['username'].valid&&userform.controls['username'].touched">
+                                    
+                                    Username is required
+                  </div>
+              <div>
+                <input pPassword type="password" placeholder="Password" [(ngModel)]="loginpage.password" formControlName="password"/>               
+                      
+              </div>
+              <div *ngIf="!userform.controls['password'].valid&&userform.controls['password'].touched">
+                                    
+                                    Password is required
+                      </div>
+                  <!--
+                <div class="ui-g form-group" style="width:80%;">
+                                <div class="ui-g-12 ui-md-4" style="width:100%;">
+                                <span class="md-inputfield">
+                                    <input pInputText type="text" [(ngModel)]="loginpage.username" formControlName="username" />
+                                    <label>Username</label>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="ui-grid-col-4">
+                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['username'].valid&&userform.controls['username'].touched">
+                                    
+                                    Username is required
+                                </div>
+                            </div>
+
+                            <div class="ui-g form-group" style="width:80%;">
+                                <div class="ui-g-12 ui-md-4" style="width:100%;">
+                                <span class="md-inputfield">
+                                    <input pInputText type="text" [(ngModel)]="loginpage.password" formControlName="password" />
+                                    <label>Password</label>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="ui-grid-col-4">
+                                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].touched">
+                                    
+                                    Password is required
+                                </div>
+                            </div>
+                            -->
+
+                <div class="logmod-checkbox"><input type="checkbox" name="" value="">Remember me next time</div>
+                
+                <button  pButton class="button-center button-center-full-size" type="submit" value="" (click)="onSubmit()">Login</button>
+                
+              </form>
+    		<div class="forget-password-btn" onClick="location='forget-password.html';">Forget Password</div>
+      </div>
+</div>                                                                       

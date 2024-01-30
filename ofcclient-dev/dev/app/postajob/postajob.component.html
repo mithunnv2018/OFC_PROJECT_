@@ -1,0 +1,239 @@
+<!--<p-growl [value]="msgs" sticky="sticky"></p-growl>-->
+
+<div class="filter-container">
+    <!--<div class="row">-->
+    <h2> Post a Job </h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="filter-container">
+    <div class="row">
+        <label>Category</label>
+        <p-selectButton class="mymultiselectbutton" [options]="subcat" [(ngModel)]="selectedTypesubcat" (click)="subcatClick($event)"></p-selectButton>
+        <!--<nav>
+            <ul>
+                <li><a href="#" class="active">Company Research</a></li>
+                <li><a href="#">Trademarks & Patents</a></li>
+                <li><a href="#">Telemarketing</a></li>
+                <li><a href="#">Article Writer</a></li>
+                <li><a href="#">Factory</a></li>
+                <li><a href="#">Promotional Videos </a></li>
+            </ul>
+        </nav>-->
+    </div>
+
+    <div class="row">
+        <label>Labels</label>
+        <p-selectButton class="mymultiselectbutton" [options]="keyword" [(ngModel)]="selectedTypeskeyword" ></p-selectButton>
+        <!--<nav class="labels">
+            <ul>
+                <li><a href="#" class="active">Accenture</a></li>
+                <li><a href="#">Deliotte</a></li>
+                <li><a href="#">Capegemini</a></li>
+                <li><a href="#">L & T Infotech</a></li>
+                <li><a href="#">Tech-Mahindra</a></li>
+                <li><a href="#">TCS</a></li>
+            </ul>
+        </nav>-->
+    </div>
+
+
+
+    <div class="filter">
+        <p-dropdown [style]="{'width':'90%'}" [(ngModel)]="projectpost.language_id_fkprojectpost" [options]="drpLanguageId" (onChange)="populateLanguage($event)"
+            [autoWidth]="false"></p-dropdown>
+
+        <!--   <select>
+            <option>Language</option>
+            <option>English</option>
+            <option>Chinees</option>
+            <option>Japnees</option>
+        </select>-->
+    </div>
+
+    <div class="filter">
+
+        <p-dropdown [style]="{'width':'90%'}" [(ngModel)]="projectpost.country_id_fkprojectpost" [options]="drpCountryId" (onChange)="populateCountry($event)"
+            [autoWidth]="false"></p-dropdown>
+        <!--   <select>
+            <option>Country</option>
+            <option>English</option>
+            <option>Chinees</option>
+            <option>Japnees</option>
+        </select>-->
+    </div>
+
+
+
+    <!--<div class="filter">
+
+        <p-dropdown [options]="drpPrice" (onChange)="populateCity($event)"></p-dropdown>
+        
+    </div>
+
+    <div class="filter">
+        <p-dropdown [options]="drpdate" (onChange)="populateCity($event)"></p-dropdown>
+        
+    </div>-->
+</div>
+<!--*****************************************************-->
+
+
+<div class="freelancer-container">
+    <h3>Describe the job to be done</h3>
+
+    <div class="employee-after-login-details name-of-job">
+        <h3> Name of your job posting</h3>
+        <input pInputText type='text' [(ngModel)]="projectpost.ofcprojectpost_title" placeholder="Example: I need PHP developer to update e-commerce website">
+    </div>
+
+    <div class="employee-after-login-details">
+        <h3> Description of work</h3>
+        <textarea pInputTextarea class="post-job-textarea" rows="10" [(ngModel)]="projectpost.ofcprojectpost_description">Over the last 7 years I have been involved in several performance-sensitive projects using Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.
+		</textarea>
+
+        <div class="characters-left">
+            <p> 1000 characters left </p>
+        </div>
+    </div>
+    <div class="post-job-attach-file">
+        <h3>
+            <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+
+
+
+
+
+
+<p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles" (onUpload)="onUpload($event)" >
+    <template pTemplate type="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </template>
+</p-fileUpload>
+<ul *ngIf="fileuploadarr.length">
+    <li *ngFor="let file1 of fileuploadarr">{{file1.fileName}}</li>
+</ul>
+</div>
+
+<div class="employee-after-login-details">
+    <h3>Require skills</h3>
+    <div class="require-skills">
+        <p-autoComplete [multiple]="true" [(ngModel)]="selectedSkills" [suggestions]="autoSkills" (completeMethod)="search($event)"
+            field="label"></p-autoComplete>
+
+        <!--<div class="skills"><span>java script</span> <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png"></div>
+            <div class="skills"><span>visual studio dot net</span> <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png"></div>-->
+    </div>
+</div>
+
+<div class="employee-after-login-details">
+    <h3>Desired experience level </h3>
+    <div class="project-type  post-job-exprience" (click)="selectExperience('1')" [ngClass]="{'project-active': projectpost.experience_id_fkprojectpost=='1'}">
+        <p class="para-full"> Entry Level</p>
+        <img src="resources/ofc/images/entry.png" width="100%">
+    </div>
+    <div class="project-type post-job-exprience" (click)="selectExperience('2')" [ngClass]="{'project-active': projectpost.experience_id_fkprojectpost=='2'}">
+        <p para-full> Intermediate</p>
+        <img src="resources/ofc/images/intermediate.png" width="100%">
+    </div>
+    <div class="project-type post-job-exprience" (click)="selectExperience('3')" [ngClass]="{'project-active': projectpost.experience_id_fkprojectpost=='3'}">
+        <p para-full> Expert</p>
+        <img src="resources/ofc/images/expert.png" width="100%">
+    </div>
+</div>
+
+<div class="employee-after-login-details">
+    <!--<h3>How many freelancers do you need to hire?</h3>-->
+    <h3>How much time duration do you need?</h3>
+
+
+
+
+
+
+
+
+
+    <div class="popular-search-block" (click)="selectTimeFrame('1 Day or Few Hours')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='1 Day or Few Hours'}">
+        <p> 1 Day or </p>
+        <p>Few Hours</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Week')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='3 to 6 Week'}">
+        <p> 3 to 6 </p>
+        <p>Week</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('Less than 1 Month')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='Less than 1 Month'}">
+        <p> Less than </p>
+        <p>1 Month</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('1 to 3 Months')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='1 to 3 Months'}">
+        <p> 1 to 3 </p>
+        <p>Months</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Months')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='3 to 6 Months'}">
+        <p> 3 to 6 </p>
+        <p>Months</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('More than 6 Months')" [ngClass]="{'popular-active': projectpost.ofcprojectpost_timeframe=='More than 6 Months'}">
+        <p> More than </p>
+        <p>6 Months</p>
+    </div>
+
+</div>
+
+
+
+<div class="employee-after-login-details name-of-job post-job-more-questions">
+    <h3> Add some more questions you would like candidate to answer when applying to your job</h3>
+
+    <input pInputText type='text' [(ngModel)]="question" placeholder="Example: Only by Offer">
+    <div class="characters-left">
+        <p> 350 characters left </p>
+    </div>
+    <button pButton type="button" label="Add" (click)="addQuest()"><a href="javascript:void(0);"></a></button>
+
+</div>
+<ul *ngFor="let item of postquestion; let i = index">
+    <li>
+        {{item.projectpostquestions_name}}
+        <button pButton type="button" icon="fa-close" (click)="deleteQuest(i)"><a href="javascript:void(0);"></a></button>
+    </li>
+</ul>
+
+<div class="employee-after-login-details">
+    <div class="for-button-left">
+        <!--<ul *ngFor="let item of postquestion; let i = index">
+            <li>
+                {{item.projectpostquestions_name}}
+                <button pButton type="button" icon="fa-close" (click)="deleteQuest(i)"><a href="javascript:void(0);"></a></button>
+            </li>
+        </ul>-->
+    </div>
+    <!--<div class="for-button-left">
+            <div class="post-btn">Add More Questions</div>
+        </div>-->
+    <div style="clear:both"></div>
+</div>
+
+<!--    <div class="button-block " ><button class="button-right">Continue</button></div>
+-->
+<div style="clear:both"></div>
+</div>
+<!-- end of freelancer-container -->
+
+<div class="container">
+    <div class="for-button">
+        <div class="post-btn" (click)="onSubmit()"><a href="javascript:void(0);">Post Job</a></div>
+        <!--<button pButton type="button" label="Submit" (click)="onSubmit()"><a href="javascript:void(0);" ></a></button>-->
+        <p-messages [value]="msgs"></p-messages>
+    </div>
+    <div style="clear:both"></div>
+</div>

@@ -1,0 +1,98 @@
+<!--<p-messages [value]="msgs"></p-messages>-->
+<p-growl [value]="msgs"></p-growl>											<!--****coloumn left*****-->
+<div class="freelancer-after-login-header">
+    <ul>
+        <li><a href="javascript:void(0);"> Saved Jobs</a> </li>
+        <li><a href="javascript:void(0);"> Proposals </a></li>
+        <li><a href="javascript:void(0);" class="active"> Profile</a></li>
+    </ul>
+    <!-- <div style="clear:both"></div>-->
+</div>
+<!-- </div>-->
+
+<div class="container">
+    <!----------------Container block Starts third-------------------->
+    <!--****coloumn left*****-->
+ <sd-commonsettings [pagetype]="'securityquestion'"></sd-commonsettings>
+    <!--****coloumn left*****-->
+
+    <!--****coloumn Right*****-->
+    <div class="membership">
+        <h2>Change Security Question</h2>
+        <div class="membership-block tax-information-main-block change-password">
+            <p>Answer your existing question in order to create one. Please choose a question you can remember!</p>
+            <p>You will get locked out of your account if you are unable to answer correctly.</p>
+            <div class="tax-information">
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Existing Question</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <input pInputText type='text' [(ngModel)]="existingQues" />
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Answer</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <input pInputText type='text' [(ngModel)]="oldsecurityanswer" name="oldsecurityanswer" placeholder="" />
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>New Question</p>
+                    </div>
+                    <div class="plan-details-right"  >
+                       
+                        <p-dropdown [style]="{width:'90%'}" [options]="drpQuestions" [(ngModel)]="newsecurityid" name="newsecurityid" (onChange)="populateCity($event)"></p-dropdown>
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Answer</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <input pInputText type='text' [(ngModel)]="newsecurityanswer" name="newsecurityanswer" placeholder="" />
+                    </div>
+                </div>
+
+                <div class="plan-details plan-details-important">
+                    <div class="plan-details-left">
+                        <p>Important</p>
+                    </div>
+
+                    <div class="plan-details-right">
+                        
+                        <div class="job-list-checkbox">
+                            <p-checkbox name="group1" [(ngModel)]="selectedSecQuetions" class="mycheckbox" value="Remember me next time" label="Remember me next time"></p-checkbox>
+                        </div>
+                        <div class="job-list-checkbox">
+                            <p-checkbox name="group1" [(ngModel)]="selectedSecQuetions" class="mycheckbox" value="I understand my account will be locked if I am unable to answer this question"
+                                label="I understand my account will be locked if I am unable to answer this question"></p-checkbox>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--****tax information*****-->
+
+        </div>
+        <!--****membership block*****-->
+
+        <div class="for-button">
+            
+            <div class="post-btn"> <button pButton  (click)="onSubmit()" label="Submit" ></button></div>
+        </div>
+
+    </div>
+
+    <div class="clear-div"></div>
+</div>
+<!--
+</div>-->

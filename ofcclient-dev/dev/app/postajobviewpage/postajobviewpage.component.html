@@ -1,0 +1,335 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="filter-container">
+    <!-- <div class="row">-->
+    <h2>Java Project</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+<div class="freelancer-container">
+    <div class="accordion_example2">
+
+        <!-- Section 1 -->
+        <div class="accordion_in">
+            <div class="acc_head">
+                <div class="acc-img"><img src="resources/ofc/images/review.png" style="vertical-align:middle;"></div>
+                <div class="acc-name">Review</div>
+            </div>
+
+            <div class="acc_content">
+                <ng-container *ngFor="let postJobs of postJobViewGrid">
+                    <div class="acc-sub-head" id="acc-sub-head">
+                        <div class="acc-img"><img src="resources/ofc/images/user-small-01.png" style="vertical-align:middle;"></div>
+                        <div class="acc-name">{{postJobs.ofcmembers_name}}</div>
+                        <div class="acc-chat"><img src="resources/ofc/images/chat-online.png" style="vertical-align:middle;"></div>
+                    </div>
+                    <div class="acc_inner-content" id="acc-sub-details">
+                        <div class="acc-container">
+                            <h3>Cover Letter</h3>
+                            <div class="chat-btn">Chat Now</div>
+
+                            <p>{{postJobs.ofcsubmitproposal_coverletter}}</p>
+
+                            <div class="acc-attachment">
+                                <h3><img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>e-commerce.jpg</span></h3>
+                                <p>1.2 MB in size </p>
+                            </div>
+
+
+
+
+                            <div class="freelancer-col-2-details">
+                                <label> Skills </label>
+                                <div [innerHTML]="getSkillList(postJobs.skillsarr)"> </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <div class="coins-description-container">
+                                    <div class="coins-label">Coins You have to Pay</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                                <div class="coins-description-container">
+                                    <div class="coins-label">OFC Fees</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                                <div class="coins-description-container">
+                                    <div class="coins-label">Buyer Earning</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>Experience level </h3>
+                                <div class="project-type project-active post-job-exprience coins">
+                                    <p class="para-full"> Entry Level</p>
+                                    <img src="resources/ofc/images/entry.png" width="100%">
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>This Job To be Done</h3>
+                                <div class="popular-search-block project-active coins">
+                                    <p>More than </p>
+                                    <p>6 Months</p>
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>Commitment for this job?</h3>
+                                <div class="popular-search-block project-active desired-experience-level coins ">
+                                    <span>I don't know yet</span>
+                                    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+                                </div>
+                            </div>
+
+                            <h2>Few question you were asked to candidate</h2>
+
+                            <div class="coins-description coins-question" *ngFor="let quesAns of postJobs.questansarr">
+
+                                <h3>{{quesAns.ofcsubmitproposalquest_question}}</h3>
+                                <p>{{quesAns.ofcsubmitproposalquest_answer}}</p>
+
+
+                            </div>
+
+
+                            <div class="coins-accept-offer">
+
+                                <div class="post-btn " style="background-color:#fff">
+                                    <button style="background-color:#f17023" pButton type="button" (click)="onclickAcceptOffer(postJobs.ofcsubmitproposal_id)"
+                                        label="Accept Offer"></button>
+                                    <button style="background-color:#f17023" pButton type="button" (click)="onclickRejectOffer(postJobs.ofcsubmitproposal_id)"
+                                        label="Reject Offer"></button>
+                                    <button style="background-color:#f17023" pButton type="button" (click)="onclickShortlistOffer(postJobs.ofcsubmitproposal_id)"
+                                        label="Shortlist Offer"></button>
+
+                                </div>
+                                <div style="clear:both"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </ng-container>
+                <!-- itertator div -->
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="accordion_in">
+            <div class="acc_head">
+                <div class="acc-img"><img src="resources/ofc/images/messages-white.png" style="vertical-align:middle;"></div>
+                <div class="acc-name">Messages</div>
+            </div>
+            <div class="acc_content">
+
+                <ng-container *ngFor="let users2 of listofusers; let i = index;">
+                    <div class="acc-sub-head" id="acc-sub-head">
+                        <div class="acc-img"><img src="resources/ofc/images/login-user.png" style="vertical-align:middle;"></div>
+                        <div class="acc-name">{{users2.username}}</div>
+                        <div class="acc-chat"><img src="resources/ofc/images/chat-online.png" style="vertical-align:middle;"></div>
+                    </div>
+                    <div class="acc_inner-content" id="acc-sub-details">
+                        <div class="chat-enter-text">
+
+                            <p class="chat-receiver"><span class="receiver">Hello, Good morning</span></p>
+                            <p class="chat-sender"><span class="sender">Hello, Good morning</span></p>
+                            <p class="chat-receiver"><span class="receiver">How are you?</span></p>
+                            <p class="chat-sender"><span class="sender">I am good, and you?</span></p>
+                            <p class="chat-sender"><span class="sender">What are you doing now?</span></p>
+                            
+                            <ng-container *ngIf="listofoldchats[i]">
+                                <ng-container  *ngFor="let itemold of listofoldchats[i].messages; let k = index;">
+                                    <p [ngClass]="{'chat-sender': itemold.author==users2.author,'chat-receiver': itemold.author!=users2.author}">
+                                        <span [ngClass]="{'sender': itemold.author==users2.author,'receiver': itemold.author!=users2.author}">{{itemold.message}}</span></p>
+                                </ng-container>
+                            </ng-container>
+                            
+                            <ng-container *ngFor="let item of users2.messages; let j = index;">
+                                <p [ngClass]="{'chat-sender': item.author==users2.author,'chat-receiver': item.author!=users2.author}">
+                                    <span [ngClass]="{'sender': item.author==users2.author,'receiver': item.author!=users2.author}">{{item.message}}</span></p>
+                            </ng-container>
+                        </div>
+                        <div class="chat-text-type">
+                            <div class="chat-write"><input (keyup.enter)="onSubmitChat(i,users2.otherauthor)" [(ngModel)]="users2.message" type="text" placeholder="write a message here..."></div>
+                            <div class="send-message-btn" (click)="onSubmitChat(i,users2.otherauthor)"><img src="resources/ofc/images/send-message.png"></div>
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="acc-sub-head" id="acc-sub-head">
+                    <div class="acc-img"><img src="resources/ofc/images/login-user.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name">Mithun Nair Demo</div>
+                    <div class="acc-chat"><img src="resources/ofc/images/chat-online.png" style="vertical-align:middle;"></div>
+                </div>
+                <div class="acc_inner-content" id="acc-sub-details">
+                    <div class="chat-enter-text">
+                        <p class="chat-receiver"><span class="receiver">Hello, Good morning</span></p>
+                        <p class="chat-sender"><span class="sender">Hello, Good morning</span></p>
+                        <p class="chat-receiver"><span class="receiver">How are you?</span></p>
+                        <p class="chat-sender"><span class="sender">I am good, and you?</span></p>
+                        <p class="chat-sender"><span class="sender">What are you doing now?</span></p>
+                    </div>
+                    <div class="chat-text-type">
+                        <div class="chat-write"><input type="text" placeholder="write a message here..."></div>
+                        <div class="send-message-btn"><img src="resources/ofc/images/send-message.png"></div>
+                    </div>
+                </div>
+
+                <div class="acc-sub-head" id="acc-sub-head">
+                    <div class="acc-img"><img src="resources/ofc/images/login-user.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name">Atul Kulve Demo</div>
+                    <div class="acc-chat"><img src="resources/ofc/images/chat-offline.png" style="vertical-align:middle;"></div>
+                </div>
+                <div class="acc_inner-content" id="acc-sub-details">
+                    <div class="chat-enter-text">
+                        <p class="chat-receiver"><span class="receiver">Hello, Good morning</span></p>
+                        <p class="chat-sender"><span class="sender">Hello, Good morning</span></p>
+                        <p class="chat-receiver"><span class="receiver">How are you?</span></p>
+                        <p class="chat-sender"><span class="sender">I am good, and you?</span></p>
+                        <p class="chat-sender"><span class="sender">What are you doing now?</span></p>
+                    </div>
+                    <div class="chat-text-type">
+                        <div class="chat-write"><input type="text" placeholder="write a message here..."></div>
+                        <div class="send-message-btn"><img src="resources/ofc/images/send-message.png"></div>
+                    </div>
+                </div>
+
+                <div class="acc-sub-head" id="acc-sub-head">
+                    <div class="acc-img"><img src="resources/ofc/images/login-user.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name">Sushil Dongre Demo</div>
+                    <div class="acc-chat"><img src="resources/ofc/images/chat-offline.png" style="vertical-align:middle;"></div>
+                </div>
+                <div class="acc_inner-content" id="acc-sub-details">
+                    <div class="chat-enter-text">
+                        <p class="chat-receiver"><span class="receiver">Hello, Good morning</span></p>
+                        <p class="chat-sender"><span class="sender">Hello, Good morning</span></p>
+                        <p class="chat-receiver"><span class="receiver">How are you?</span></p>
+                        <p class="chat-sender"><span class="sender">I am good, and you?</span></p>
+                        <p class="chat-sender"><span class="sender">What are you doing now?</span></p>
+                    </div>
+                    <div class="chat-text-type">
+                        <div class="chat-write"><input type="text" placeholder="write a message here..."></div>
+                        <div class="send-message-btn"><img src="resources/ofc/images/send-message.png"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="accordion_in">
+            <div class="acc_head">
+                <div class="acc-img"><img src="resources/ofc/images/hire.png" style="vertical-align:middle;"></div>
+                <div class="acc-name">Hire</div>
+            </div>
+
+            <div class="acc_content">
+                <ng-container *ngFor="let hireJob of hireJobGrid">
+                    <div class="acc-sub-head" id="acc-sub-head">
+                        <div class="acc-img"><img src="resources/ofc/images/user-small-03.png" style="vertical-align:middle;"></div>
+                        <div class="acc-name">{{hireJob.ofcmembers_name}}</div>
+                        <div class="acc-chat"><img src="resources/ofc/images/chat-offline.png" style="vertical-align:middle;"></div>
+                    </div>
+                    <div class="acc_inner-content" id="acc-sub-details">
+                        <div class="acc-container">
+                            <h3>Cover Letter</h3>
+                            <div class="chat-btn">Chat Now</div>
+
+                            <p>{{hireJob.ofcsubmitproposal_coverletter}}</p>
+
+                            <div class="acc-attachment">
+                                <h3><img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>e-commerce.jpg</span></h3>
+                                <p>1.2 MB in size </p>
+                            </div>
+
+
+                            <div class="freelancer-col-2-details">
+                                <label> Skills </label>
+                                <div [innerHTML]="getSkillList(hireJob.skillsarr)"> </div>
+                            </div>
+
+
+                            <div class="coins-description">
+                                <div class="coins-description-container">
+                                    <div class="coins-label">Coins You have to Pay</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                                <div class="coins-description-container">
+                                    <div class="coins-label">OFC Fees</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                                <div class="coins-description-container">
+                                    <div class="coins-label">Buyer Earning</div>
+                                    <div class="coins-input">40 Coins</div>
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>Experience level </h3>
+                                <div class="project-type project-active post-job-exprience coins">
+                                    <p class="para-full"> Entry Level</p>
+                                    <img src="resources/ofc/images/entry.png" width="100%">
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>This Job To be Done</h3>
+                                <div class="popular-search-block popular-active coins">
+                                    <p>More than </p>
+                                    <p>6 Months</p>
+                                </div>
+                            </div>
+
+                            <div class="coins-description">
+                                <h3>Commitment for this job?</h3>
+                                <div class="popular-search-block popular-active desired-experience-level coins ">
+                                    <span>I don't know yet</span>
+                                    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+                                </div>
+                            </div>
+
+                            <h2>Few question you were asked to candidate</h2>
+
+
+                            <div class="coins-description coins-question" *ngFor="let quesAnsHire of hireJob.questansarr">
+
+                                <h3>{{quesAnsHire.ofcsubmitproposalquest_question}}</h3>
+                                <p>{{quesAnsHire.ofcsubmitproposalquest_answer}}</p>
+
+
+                            </div>
+
+                        </div>
+                        <!------------------------------------------------------------------>
+
+                    </div>
+
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="accordion_in">
+            <div class="acc_head">
+                <div class="acc-img"><img src="resources/ofc/images/action.png" style="vertical-align:middle;"></div>
+                <div class="acc-name">Action</div>
+            </div>
+
+            <div class="acc_content">
+                <div class="action-btn">
+                    <div class="acc-img"><img src="resources/ofc/images/view.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name action-name"><a href="javascript:void(0);">View Posting</a></div>
+                </div>
+                <div class="action-btn">
+                    <div class="acc-img"><img src="resources/ofc/images/edit-post.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name action-name"><a href="javascript:void(0);">Edit Posting</a></div>
+                </div>
+                <div class="action-btn">
+                    <div class="acc-img"><img src="resources/ofc/images/cross.png" style="vertical-align:middle;"></div>
+                    <div class="acc-name action-name"><a href="javascript:void(0);">Remove Posting</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!----- end of freelancer-container---->

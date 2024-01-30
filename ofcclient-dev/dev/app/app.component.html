@@ -1,0 +1,107 @@
+<div class="wrapper">
+  <!----------------wrapper block Starts-------------------->
+  <div class="header">
+    <div class="header-container">
+      <div class="logo">
+        <a [routerLink]="['/index']"><img src="resources/ofc/images/ofc-logo.png" /></a>
+      </div>
+
+      <div id="toggle-button" class="toggle-button"><img src="resources/ofc/images/menu.png" /></div>
+
+      <div class="nav" id="nav">
+        <ul>
+          <li class="nav-first dropdown">
+            <a href="javascript:void(0);" class="dropbtn dropdown-new"><img src="resources/ofc/images/magnifier.png" /></a>
+            <div class="dropdown-content dropdown-width" id="list-1">
+              <a [routerLink]="['/searchfreelancers']">Hire For Job</a>
+              <a [routerLink]="['/joblist']">Search offers</a>
+            </div>
+            <input type="text" placeholder="Search Offers" class="dropdown-new" /><span class="down-arrow" id="drop-btn-1"><img src="resources/ofc/images/down.png"  /></span>
+            <div style="clear:both"></div>
+          </li>
+          <ng-container *ngIf="loggedIn==false">
+            <li class="dropdown" id="drop-btn-2">
+              <a href="javascript:void(0);" class="dropbtn">Browse <span class="down-arrow">
+                <img src="resources/ofc/images/down.png" /></span></a>
+              <div class="dropdown-content dropdown-width" id="list-2">
+                <a href="javascript:void(0);">PHP Developer</a>
+                <a href="javascript:void(0);">HTML 5</a>
+                <a href="javascript:void(0);">Web Designer</a>
+              </div>
+            </li>
+
+            <li class="nav-first-divider"><span class="divider"></span></li>
+            <li><a href="javascript:void(0);">How it works</a></li>
+
+            <li class="dropdown" id="drop-btn-3">
+              <a href="javascript:void(0);" class="dropbtn">Language <span class="down-arrow"><img src="resources/ofc/images/down.png" /></span></a>
+              <div class="dropdown-content" id="list-3">
+                <a href="javascript:void(0);">Chinese</a>
+                <a href="javascript:void(0);">English</a>
+                <a href="javascript:void(0);">Russian</a>
+              </div>
+            </li>
+
+            <li><a [routerLink]="['/signup']">Sign In</a></li>
+            <li class="nav-first-divider"><span class="divider"></span></li>
+            <li><a [routerLink]="['/loginpage']">Login</a></li>
+
+            <li class="last"><a [routerLink]="['/signup']" class="start-now-button">Start Now</a></li>
+
+          </ng-container>
+
+          
+            <li [style.display]="loggedIn==true?'inherit':'none'" ><a [routerLink]="['/joblist']" class="active">Find Offers</a></li>
+            <li [style.display]="loggedIn==true?'inherit':'none'" ><a [routerLink]="['/postajobreports']">My Offers</a></li>
+            <li [style.display]="loggedIn==true?'inherit':'none'" ><a href="javascript:void(0);">Reports</a></li>
+            <!--<li><a href="">Messages <div class="messages"><span>10</span></div></a></li>-->
+            <li [style.display]="loggedIn==true?'inherit':'none'"><a [routerLink]="['/postajob']" class="start-now-button">Post Offer</a></li>
+
+            <li class="dropdown" id="drop-btn-22" (click)="loadDropdown0()" [style.display]="loggedIn==true?'inherit':'none'">
+              <a href="javascript:void(0);" class="dropbtn">
+
+                <img src="resources/ofc/images/notification.png">
+                <span class="down-arrow"><img src="resources/ofc/images/down.png" /></span>
+              </a>
+              <div class="dropdown-content dropdown-width" id="list-22">
+                <a [routerLink]="['/myprofile']">Setting</a>
+                <a href="javascript:void(0);" (click)="logout()">Log Out</a>
+              </div>
+            </li>
+            <!--<li>
+              <p-splitButton *ngIf="loggedIn==true" icon="fa-check"  [model]="settingsmenu">
+                
+              </p-splitButton>
+            </li>-->
+
+            <li class="dropdown" id="drop-btn-23" (click)="loadDropdown1()" [style.display]="loggedIn==true?'inherit':'none'">
+              <a href="javascript:void(0);" class="dropbtn">
+                <span class="login-user"><img src="resources/ofc/images/login-user.png" /></span>
+                 {{userName}}
+                <span class="down-arrow"><img src="resources/ofc/images/down.png" /></span>
+              </a>
+              <div class="dropdown-content dropdown-width" id="list-23" >
+                <a [routerLink]="['/myprofile']">Setting</a>
+                <a href="javascript:void(0);" (click)="logout()">Log Out</a>
+              </div>
+            </li>
+
+          
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!----------------Header block Ends-------------------->
+  <router-outlet></router-outlet>
+
+
+  <div class="footer">
+    <!----------------Container block Starts footer-------------------->
+    All Right Reserved © 2016 OfferFromChina
+  </div>
+<div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:#555555'></div><script type='text/javascript'>setTimeout(function(){{var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=False&ui=true&settings=Manual&from=';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }},0);</script>
+  <!----------------Container block Ends foote-------------------->
+
+</div>
+<!----------------wrapper block Ends-------------------->

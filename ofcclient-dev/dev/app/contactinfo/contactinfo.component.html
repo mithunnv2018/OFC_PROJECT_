@@ -1,0 +1,102 @@
+<div class="freelancer-after-login-header">
+    <ul>
+        <li><a href="javascript:void(0);"> Saved Jobs</a> </li>
+        <li><a href="javascript:void(0);"> Proposals </a></li>
+        <li><a href="javascript:void(0);" class="active"> Profile</a></li>
+    </ul>
+    <!-- <div style="clear:both"></div>-->
+</div>
+<!-- </div>-->
+
+<div class="container">
+    <!----------------Container block Starts third-------------------->
+    <!--****coloumn left*****-->
+     <p-growl [value]="msgs"></p-growl>
+    <sd-commonsettings [pagetype]="'contactinfo'"></sd-commonsettings>
+    <!--****coloumn left*****-->
+
+    <!--****coloumn Right*****-->
+    <div class="membership">
+        <h2>Contact Information</h2>
+        <div class="membership-block tax-information-main-block">
+            <div class="user-image for-mobile">
+                <h4>User Image</h4>
+                <img src="resources/ofc/images/user-01.png" alt="User Images">
+            </div>
+
+            <!--<p> Before withdrawings funds, all non-U.S. person must provide their W-8BEN tax information.</p>-->
+            <div class="contact-information">
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Address 1</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <textarea pInputTextarea class="post-job-textarea" rows="5" [(ngModel)]="ofcmembers.ofcmembers_address1">
+                        </textarea>
+
+                        <div class="characters-left">
+                            <p> 1000 characters left </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Address 2</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <textarea pInputTextarea class="post-job-textarea" rows="5" [(ngModel)]="ofcmembers.ofcmembers_address2">
+                        </textarea>
+
+                        <div class="characters-left">
+                            <p> 1000 characters left </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Pincode</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <p><input pInputText type="number" placeholder="Pincode" [(ngModel)]="ofcmembers.ofcmembers_pincode" />
+                        </p>
+                    </div>
+                </div>
+
+                <div class="plan-details">
+                    <div class="plan-details-left">
+                        <p>Contact No</p>
+                    </div>
+                    <div class="plan-details-right">
+                        <p><input pInputText type="number" placeholder="Contact No" [(ngModel)]="ofcmembers.ofcmembers_contactnos"/>
+                        </p>
+                    </div>
+                </div>
+
+                
+
+            </div>
+            <!--****tax information*****-->
+
+            <div class="user-image for-web">
+                <h4>User Image</h4>
+                <img src="resources/ofc/images/user-01.png" alt="User Images">
+            </div>
+            <div class="clear-div"></div>
+        </div>
+
+
+        <div class="for-button">
+            <div class="post-btn" (click)="onSubmit()"><a href="javascript:void(0);">Save</a></div>
+
+            <!--<div class="post-btn"><a href="">Edit Contact info</a></div>-->
+        </div>
+
+    </div>
+</div>
+
+<div class="clear-div"></div>
+
+<!--
+</div>-->

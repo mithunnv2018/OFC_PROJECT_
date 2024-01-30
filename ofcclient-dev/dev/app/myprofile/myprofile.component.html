@@ -1,0 +1,469 @@
+<sd-commonsubmenu [pagetype]="'myprofile'"></sd-commonsubmenu>
+
+<!-- </div>-->
+
+<div class="container">
+     <p-growl [value]="msgs"></p-growl>
+    <!----------------Container block Starts third-------------------->
+    <!--****coloumn left*****-->
+    <sd-commonsettings [pagetype]="'myprofile'"></sd-commonsettings>
+    <!--****coloumn left*****-->
+
+    <!--****coloumn Right*****-->
+
+    <div class="membership">
+        <h2>My Profile</h2>
+
+        <!-- ************************************-->
+        <div class="freelancer-container my-profile-container">
+            <div class="my-profile-header">
+                <h3>Describe the job to be done</h3>
+            </div>
+            <div class="employee-after-login-details name-of-job">
+                <h3> Name of your job posting</h3>
+                <input pInputText type='text' [(ngModel)]='ofcmembers.ofcmembers_displayname' />
+
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3> Description of work</h3>
+
+                <textarea pInputTextarea [(ngModel)]="ofcmembers.ofcmembers_description" class="post-job-textarea" autoResize="autoResize"></textarea>
+                <div class="characters-left">
+
+                </div>
+            </div>
+            <div class="post-job-attach-file">
+                <h3> <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+
+                <p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles"  (onUpload)="onUpload($event)">
+                    <template pTemplate type="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </template>
+                </p-fileUpload>
+                <ul *ngIf="fileuploadarr.length">
+                    <li *ngFor="let file1 of fileuploadarr">{{file1.fileName}}</li>
+                </ul>
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3> Require skills</h3>
+                <div class="require-skills">
+                    <div class="skills">
+                        <span>
+                            <p-autoComplete [multiple]="true" [(ngModel)]="selectedSkills" [suggestions]="autoSkills" (completeMethod)="search($event)" field="skill_name"></p-autoComplete>
+                            </span>
+                        <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png">
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="employee-after-login-details">
+                <h3>Desired experience level </h3>
+                <div class="project-type project-active post-job-exprience" (click)="selectExperience('1')" [ngClass]="{'project-active': ofcmembers.ofcmembers_experiencelevel=='1'}">
+                    <p class="para-full"> Entry Level</p>
+                    <img src="resources/ofc/images/entry.png" width="100%">
+                </div>
+                <div class="project-type post-job-exprience" (click)="selectExperience('2')" [ngClass]="{'project-active': ofcmembers.ofcmembers_experiencelevel=='2'}">
+                    <p para-full> Intermediate</p>
+                    <img src="resources/ofc/images/intermediate.png" width="100%">
+                </div>
+                <div class="project-type post-job-exprience" (click)="selectExperience('3')" [ngClass]="{'project-active': ofcmembers.ofcmembers_experiencelevel=='3'}">
+                    <p para-full> Expert</p>
+                    <img src="resources/ofc/images/expert.png" width="100%">
+                </div>
+            </div>
+
+            <button class="post-btn" pButton (click)="saveMyProfile()" type="button" label="Save"></button>
+
+            <div style="clear:both"></div>
+        </div>
+        <!----- end of freelancer-container---->
+
+        <!--************************************-->
+
+        <!-- ************************************-->
+        <div class="freelancer-container my-profile-container">
+            <div class="my-profile-header">
+                <h3>My Project</h3>
+            </div>
+            <div class="employee-after-login-details name-of-job">
+                <div class="project-title-block">
+                    <div class="project-title-block-left">
+                        <h4>Project Title</h4>
+                        <input pInputText type='text' [(ngModel)]='myProject.ofcmemmyproject_title' />
+                    </div>
+
+                    <div class="project-title-block-left">
+                        <h4>Project Category</h4>
+                        <p-dropdown [style]="{width:'200px'}" [(ngModel)]="myProject.maincat_id" [options]="drpMainCatId" (onChange)="onCategorySelect($event)"></p-dropdown>
+
+                    </div>
+                    <div class="clear-div"></div>
+                </div>
+
+                <h3> Project URL</h3>
+
+                <textarea pInputTextarea [(ngModel)]="myProject.ofcmemmyproject_url" class="post-job-textarea textarea1" autoResize="autoResize"></textarea>
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3>Poject Overview</h3>
+                <textarea pInputTextarea [(ngModel)]="myProject.ofcmemmyproject_description" class="post-job-textarea" autoResize="autoResize"></textarea>
+                <div class="characters-left">
+
+                </div>
+            </div>
+
+
+            <div class="post-job-attach-file">
+                <h3> <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+
+
+                <p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles"   (onUpload)="onUploadProject($event)">
+                    <template pTemplate type="content">
+                        <ul *ngIf="uploadedFilesProject.length">
+                            <li *ngFor="let fileProject of uploadedFilesProject">{{fileProject.name}} - {{fileProject.size}} bytes</li>
+                        </ul>
+                    </template>
+                </p-fileUpload>
+                <ul *ngIf="fileuploadarrProject.length">
+                    <li *ngFor="let fileProject1 of fileuploadarrProject">{{fileProject1.fileName}}</li>
+                </ul>
+
+            </div>
+
+
+            <div class="employee-after-login-details">
+                <h3> Used skills</h3>
+                <div class="require-skills">
+                    <div class="skills">
+                        <span>
+                            <p-autoComplete [multiple]="true" [(ngModel)]="selectedProjectSkills" [suggestions]="autoSkills" (completeMethod)="search($event)" field="skill_name"></p-autoComplete>
+                            </span>
+                        <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="plus-button">
+                <!-- <img src="resources/ofc/images/plus-button.png"> -->
+                <button class="post-btn" pButton (click)="saveMyProject()" type="button" label="Save"></button>
+
+            </div>
+
+
+
+            <p-dataTable [value]="myProjectGrid" [responsive]="true"  selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onProjectRowSelect($event)"
+                [(selection)]="selectedProjectsRow">
+                <p-column field="ofcmemmyproject_title" [filter]="true" filterPlaceholder="Project Title" header="Project Title"></p-column>
+                <p-column field="ofcmemmyproject_url" [filter]="true" filterPlaceholder="Project URL" header="Project URL"></p-column>
+                <p-column styleClass="col-button">
+                    <template pTemplate="header">
+                        <button type="button" pButton icon="ui-icon-delete"></button>
+                    </template>
+                    <template let-proj="rowData" pTemplate="body">
+                        <button type="button" pButton (click)="deleteproj(proj)" icon="ui-icon-delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+
+
+            <div style="clear:both"></div>
+        </div>
+        <!----- end of freelancer-container---->
+
+        <!--************************************-->
+
+
+        <!-- ************************************-->
+        <div class="freelancer-container my-profile-container">
+            <div class="my-profile-header">
+                <h3>Emlpoyment History</h3>
+            </div>
+            <div class="employee-after-login-details name-of-job">
+                <div class="project-title-block">
+                    <div class="project-title-block-left">
+                        <h4>Employment Name </h4>
+                        <input pInputText type='text' [(ngModel)]='memberEmployment.ofcmememployment_name' />
+                    </div>
+
+                    <div class="project-title-block-left">
+                        <h4>Project Title</h4>
+                         <p-dropdown [style]="{width:'200px'}" [(ngModel)]="memberEmployment.maincat_id" [options]="drpMainCatId" (onChange)="onCategorySelect($event)"></p-dropdown>
+
+                    </div>
+                    <div class="clear-div"></div>
+                </div>
+                <div class="project-title-block">
+                    <div class="project-title-block-left">
+                        <h4>Employment Role </h4>
+                        <input pInputText type='text' [(ngModel)]='memberEmployment.ofcmememployment_role' />
+                    </div>
+
+                    <div class="project-title-block-left">
+                        <div class="project-title-block-left">
+                            <h4>Start Date</h4>
+                            <p-calendar [(ngModel)]="memberEmployment.ofcmememployment_startdate" dateFormat="mm/dd/yy" ></p-calendar>
+                                
+                        </div>
+                        <div class="project-title-block-left">
+                            <h4>End Date</h4>
+                           <p-calendar [(ngModel)]="memberEmployment.ofcmememployment_enddate" dateFormat="mm/dd/yy" ></p-calendar>
+                                
+                        </div>
+                    </div>
+
+                    <div class="clear-div"></div>
+                </div>
+
+
+                <!-- <div class="employee-after-login-details">-->
+                <h3>Employment Overview</h3>
+
+   <textarea pInputTextarea [(ngModel)]="memberEmployment.ofcmememployment_description" class="post-job-textarea" autoResize="autoResize"></textarea>
+
+                <div class="characters-left">
+
+                </div>
+            </div>
+
+
+            <div class="post-job-attach-file">
+                <h3> <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+
+                <p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles"  (onUpload)="onUploadEmployment($event)">
+                    <template pTemplate type="content">
+                        <ul *ngIf="uploadedFilesEmployment.length">
+                            <li *ngFor="let fileEmployment of uploadedFilesEmployment">{{fileEmployment.name}} - {{fileEmployment.size}} bytes </li>
+                        </ul>
+                    </template>
+                </p-fileUpload>
+                <ul *ngIf="fileuploadarrEmployment.length">
+                    <li *ngFor="let fileEmployment1 of fileuploadarrEmployment">{{fileEmployment1.fileName}}</li>
+                </ul>
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3> Used skills</h3>
+                <div class="require-skills">
+                    <div class="skills">
+                        <span>
+                            <p-autoComplete [multiple]="true" [(ngModel)]="selectedEmploymentSkills" [suggestions]="autoSkills" (completeMethod)="search($event)" field="skill_name"></p-autoComplete>
+                            </span>
+                        <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="plus-button">
+               <!-- <img src="resources/ofc/images/plus-button.png">-->
+               <button class="post-btn" pButton (click)="saveMemberEmployment()" type="button" label="Save"></button>
+            </div>
+
+            
+            <p-dataTable [value]="memberEmploymentGrid" [responsive]="true"  selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onEmploymentRowSelected($event)"
+                [(selection)]="selectedEmploymentsRow">
+                <p-column field="ofcmememployment_name" [filter]="true" filterPlaceholder="Employment Name" header="Employment Name"></p-column>
+                <p-column field="ofcmememployment_role" [filter]="true" filterPlaceholder="Employment Role" header="Employment Role"></p-column>
+                <p-column styleClass="col-button">
+                    <template pTemplate="header">
+                        <button type="button" pButton icon="ui-icon-delete"></button>
+                    </template>
+                    <template let-emp="rowData" pTemplate="body">
+                        <button type="button" pButton (click)="deleteemp(emp)" icon="ui-icon-delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+
+            <div style="clear:both"></div>
+        </div>
+        <!----- end of freelancer-container---->
+
+        <!--************************************-->
+
+        <!-- ************************************-->
+        <div class="freelancer-container my-profile-container">
+            <div class="my-profile-header">
+                <h3>Education</h3>
+            </div>
+            <div class="employee-after-login-details name-of-job">
+                <div class="employee-after-login-details name-of-job">
+                    <div class="project-title-block">
+                        <div class="project-title-block-left">
+                            <h4>Name of Course </h4>
+                           <input pInputText type='text' [(ngModel)]='memberEducation.ofcmembereducation_title' />
+                        </div>
+
+                        <div class="project-title-block-left">
+                            <h4>Education</h4>
+                            <p-dropdown [style]="{width:'200px'}" [(ngModel)]="memberEducation.education_id" [options]="drpEducationId" (onChange)="onCategorySelect($event)"></p-dropdown>
+
+                        </div>
+                        <div class="clear-div"></div>
+                    </div>
+
+                    <div class="project-title-block">
+                        <div class="project-title-block-left">
+                            <h4>Specilization </h4>
+                            <input pInputText type='text' [(ngModel)]='memberEducation.ofcmembereducation_specilization' />
+                        </div>
+
+                        <div class="project-title-block-left">
+                            <div class="project-title-block-left">
+                                <h4>Start Date</h4>
+                              <p-calendar [(ngModel)]="memberEducation.ofcmembereducation_startdate" dateFormat="mm/dd/yy" ></p-calendar>
+                            </div>
+                            <div class="project-title-block-left">
+                                <h4>End Date</h4>
+                              <p-calendar [(ngModel)]="memberEducation.ofcmembereducation_enddate" dateFormat="mm/dd/yy" ></p-calendar>
+                            </div>
+                        </div>
+
+
+                        <div class="clear-div"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plus-button">
+               <!-- <img src="resources/ofc/images/plus-button.png">-->
+             <button class="post-btn" pButton (click)="saveMemberEducation()" type="button" label="Save"></button>
+            </div>
+
+            
+            <p-dataTable [value]="memberEducationGrid" [responsive]="true"  selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onEducationRowSelected($event)"
+                [(selection)]="selectedEducationsRow">
+                <p-column field="ofcmembereducation_title" [filter]="true" filterPlaceholder="Name of Course" header="Name of Course"></p-column>
+                <p-column field="ofcmembereducation_specilization" [filter]="true" filterPlaceholder="Specilization" header="Specilization"></p-column>
+                <p-column styleClass="col-button">
+                    <template pTemplate="header">
+                        <button type="button" pButton icon="ui-icon-delete"></button>
+                    </template>
+                    <template let-edu="rowData" pTemplate="body">
+                        <button type="button" pButton (click)="deleteedu(edu)" icon="ui-icon-delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+
+            <div style="clear:both"></div>
+        </div>
+        <!----- end of freelancer-container---->
+
+        <!--************************************-->
+
+        <!-- ************************************-->
+        <div class="freelancer-container my-profile-container">
+            <div class="my-profile-header">
+                <h3>Other Experience</h3>
+            </div>
+            <div class="employee-after-login-details name-of-job">
+                <div class="project-title-block">
+                    <div class="project-title-block-left">
+                        <h4>Employment Name </h4>
+                        <input pInputText type='text' [(ngModel)]='memberExperience.ofcmemexperience_name' />
+                    </div>
+
+                    <div class="project-title-block-left">
+                        <h4>Project Title</h4>
+                        <p-dropdown [style]="{width:'200px'}" [(ngModel)]="memberExperience.maincat_id" [options]="drpMainCatId" (onChange)="onCategorySelect($event)"></p-dropdown>
+
+
+                    </div>
+                    <div class="clear-div"></div>
+                </div>
+                <div class="project-title-block">
+                    <div class="project-title-block-left">
+                        <h4>Employment Role </h4>
+                        <input pInputText type='text' [(ngModel)]='memberExperience.ofcmemexperience_role' />
+                    </div>
+
+                    <div class="project-title-block-left">
+                        <div class="project-title-block-left">
+                            <h4>Start Date</h4>
+                           <p-calendar [(ngModel)]="memberExperience.ofcmemexperience_startdate" dateFormat="mm/dd/yy" ></p-calendar>
+                        </div>
+                        <div class="project-title-block-left">
+                            <h4>End Date</h4>
+                            <p-calendar [(ngModel)]="memberExperience.ofcmemexperience_enddate" dateFormat="mm/dd/yy" ></p-calendar>
+                        </div>
+                    </div>
+
+                    <div class="clear-div"></div>
+                </div>
+
+
+                <!-- <div class="employee-after-login-details">-->
+                <h3>Employment Overview</h3>
+
+         <textarea pInputTextarea [(ngModel)]="memberExperience.ofcmemexperience_description" class="post-job-textarea" autoResize="autoResize"></textarea>
+                <div class="characters-left">
+
+                </div>
+            </div>
+
+
+            <div class="post-job-attach-file">
+                <h3> <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+
+                <p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles"   (onUpload)="onUploadExperience($event)">
+                    <template pTemplate type="content">
+                        <ul *ngIf="uploadedFilesExperience.length">
+                            <li *ngFor="let fileExperience of uploadedFilesExperience">{{fileExperience.name}} - {{fileExperience.size}} bytes  </li>
+                        </ul>
+                    </template>
+                </p-fileUpload>
+                <ul *ngIf="fileuploadarrExperience.length">
+                    <li *ngFor="let filefileExperience1 of fileuploadarrExperience">{{filefileExperience1.fileName}}</li>
+                </ul>
+            </div>
+
+            <div class="employee-after-login-details">
+                <h3> Used skills</h3>
+                <div class="require-skills">
+                    <div class="skills">
+                        <span>
+                            <p-autoComplete [multiple]="true" [(ngModel)]="selectedExperienceSkills" [suggestions]="autoSkills" (completeMethod)="search($event)" field="skill_name"></p-autoComplete>
+                            </span>
+                        <img style="vertical-align:middle;" src="resources/ofc/images/cross-orange.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="plus-button">
+                <!--<img src="resources/ofc/images/plus-button.png">-->
+                 <button class="post-btn" pButton (click)="saveMemberExperience()" type="button" label="Save"></button>
+            </div>
+
+             <p-dataTable [value]="memberExperienceGrid" [responsive]="true"  selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onExperienceRowSelected($event)"
+                [(selection)]="selectedExperienceRow">
+                <p-column field="ofcmemexperience_name" [filter]="true" filterPlaceholder="Experience Name" header="Experience Name"></p-column>
+                <p-column field="ofcmemexperience_role" [filter]="true" filterPlaceholder="Experience Role" header="Experience Role"></p-column>
+                <p-column styleClass="col-button">
+                    <template pTemplate="header">
+                        <button type="button" pButton icon="ui-icon-delete"></button>
+                    </template>
+                    <template let-exp="rowData" pTemplate="body">
+                        <button type="button" pButton (click)="deleteexp(exp)" icon="ui-icon-delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+            <div style="clear:both"></div>
+        </div>
+        <!----- end of freelancer-container---->
+
+        <!--************************************-->
+
+
+        <div class="for-button">
+            <div class="post-btn"><a href="">Submit</a></div>
+        </div>
+
+    </div>
+
+    <div class="clear-div"></div>
+</div>
+<!--
+</div>-->

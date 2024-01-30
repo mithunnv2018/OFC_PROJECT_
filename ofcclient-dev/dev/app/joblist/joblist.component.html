@@ -1,0 +1,137 @@
+<sd-commonsubmenu [pagetype]="'joblist'"></sd-commonsubmenu>
+
+<div class="container">
+    <!----------------Container block Starts third-------------------->
+    <!--****coloumn left*****-->
+    <div class="popular-services-block1">
+        <div class="middle-block1">
+
+            <p-dropdown [style]="{width:'200px'}" autoWidth="false" [options]="drpMaincat"></p-dropdown>
+
+        </div>
+
+        <div class="left-block2">
+            <h3>Experience Level</h3>
+
+            <div class="job-list-checkbox">
+                <p-checkbox label="Hourly" name="group1" [(ngModel)]="selectedMaincat" class="mycheckbox">
+                </p-checkbox>
+            </div>
+
+            <div class="job-list-checkbox">
+                <p-checkbox label="Fixed" name="group1" [(ngModel)]="selectedMaincat" class="mycheckbox">
+                </p-checkbox>
+            </div>
+
+        </div>
+
+
+        <div class="left-block2">
+            <h3>Recent Searches</h3>
+            <nav class="labels">
+                <ul>
+                    <li> <a href="javascript:void(0);">Andriod</a></li>
+                    <li> <a href="javascript:void(0);">Angula</a></li>
+                    <li> <a href="javascript:void(0);">Jasper</a></li>
+                    <li> <a href="javascript:void(0);">E-commerce</a></li>
+                    <li> <a href="javascript:void(0);">HTML</a></li>
+                    <li> <a href="javascript:void(0);">CSS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!--****coloumn left*****-->
+
+    <!--****coloumn Right*****-->
+    <div class="popular-services-block2 block2-border post-job-list">
+        <div class="block-container">
+            Sort By
+            <select class="select-text2">
+                <option>Newly First</option>
+                <option selected>Newly First</option>          
+                <option selected>old Work</option>                
+              </select>
+            <div class="jobs-found"><span>3,8542</span> Jobs Found</div>
+            <div style="clear:both"></div>
+        </div>
+        <!-- *****************************************************************************************-->
+
+
+
+        <p-dataList [value]="joblistGrid" [paginator]="true" [rows]="5">
+            <!--<header>
+               Freelancer Page Job List
+            </header>-->
+            <template let-joblists let-i="index">
+
+
+                <div class="work-history work-history-2nd-line" (click)="displayMyProposal(joblists.ofcprojectpost_id)">
+                    <div class="work-history-division post-job-right-block-hedding">
+                        <h3>{{joblists.ofcprojectpost_title}}</h3>
+                        <span><img src="resources/ofc/images/dislike.png" style="vertical-align:middle;"> <img src="resources/ofc/images/like.png" style="vertical-align:middle;"> </span>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div class="work-history-division">
+                        <p class="p1">{{joblists.ofcprojectpost_description}}<a href="javascript:void(0);">read more</a></p>
+                    </div>
+                    <!--<p class="p2">I have been working in Java for last 10 years. Java expertise: - J2EE Expertise 15 years Spring Expertise
+                        4 years Hibernate Expertise 5 years Struts Expertise 5 years Angular.JS... <a href="freelancer-page-job-propsal.html">read more</a>                        
+                        </p>-->
+
+                    <div class="freelancer-col-2-details">
+                        <label> Skills Required </label>
+                        <div [innerHTML]="getSkillList(joblists.filearr)"> </div>
+
+                    </div>
+
+                    <div class="client-payment-status">
+                        <div class="payment-status-inner-blocks">
+                            <span>Client: </span>Payment Varified
+                        </div>
+                        <div class="payment-status-inner-blocks">
+                            <div class="freelancer-col-1-rating">
+                                <fieldset class="rating">
+                                    <p-rating [(ngModel)]="val" ></p-rating>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <span>Less than </span> {{joblists.ofcprojectpost_budget}}
+                        </div>
+
+                        <div class="payment-status-inner-blocks">
+                            <img src="resources/ofc/images/location.png" alt="Loaction" style="vertical-align:middle;"><span>India</span>
+                        </div>
+                    </div>
+
+                </div>
+  <div style="clear:both"></div>
+            </template>
+        </p-dataList>
+
+
+
+
+
+
+    </div>
+    <!--coloumn Right-->
+
+    <!--
+    <div class="post-job-list-paggination">
+        <div class="pagination">
+            <ul>
+                <li>Previous</li>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>4</li>
+                <li>Next</li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="clear-div"></div>
+</div>
+<!--Container close-->

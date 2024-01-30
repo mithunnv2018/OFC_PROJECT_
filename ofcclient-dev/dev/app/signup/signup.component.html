@@ -1,0 +1,59 @@
+<div class="logmod">
+   <p-growl [value]="msgs"></p-growl>
+  <h1>Create New Account</h1>
+  <div class="logmod__wrapper">
+
+    <ul class="logmod__tabs">
+      <li data-tabtar="lgm-1"><a href="#">Company Sign Up</a></li>
+      <li data-tabtar="lgm-2"><a href="#">Individual Sign Up</a></li>
+    </ul>
+
+    <div class="logmod__tab-wrapper">
+      <div class="logmod__tab lgm-1">
+
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_fname" placeholder="First Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_lname" placeholder="Last Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_name" placeholder="Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmember_type" placeholder="Member Type" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_emailid" placeholder="E-Mail ID" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_password" placeholder="Password" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers.ofcmembers_password" placeholder="Confirm Password" />
+
+          <p-dropdown [style]="{width:'500px'}" [options]="drpCountryId" [(ngModel)]="ofcmembers.countryId" (onChange)="populateStates($event)"></p-dropdown>
+          <p-dropdown [style]="{width:'500px'}" [options]="drpStateId" [(ngModel)]="ofcmembers.state_id" (onChange)="populateCity($event)"></p-dropdown>
+          <p-dropdown [style]="{width:'500px'}" [options]="drpCityId" [(ngModel)]="ofcmembers.city_id"></p-dropdown>
+
+
+          <div class="logmod-checkbox">
+            <p-checkbox name="group1" [(ngModel)]="selectedTermsConditions" class="mycheckbox" label="Terms & Conditions" value="Terms & Conditions"></p-checkbox>
+          </div>
+
+          <button class="button-center button-center-full-size" pButton (click)="onSubmitCompany()" type="button" label="Register"></button>
+        
+      </div>
+
+      <div class="logmod__tab lgm-2">
+
+     
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_fname" placeholder="First Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_lname" placeholder="Last Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_name" placeholder="Individual Name" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmember_type" placeholder="Member Type" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_emailid" placeholder="E-Mail ID" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_password" placeholder="Password" />
+          <input pInputText type='text' [(ngModel)]="ofcmembers1.ofcmembers_password" placeholder="Confirm Password" />
+
+          <p-dropdown [style]="{width:'90%'}" [options]="drpCountryId" [(ngModel)]="ofcmembers1.countryId" (onChange)="populateStates($event)"></p-dropdown>
+          <p-dropdown [style]="{width:'90%'}" [options]="drpStateId" [(ngModel)]="ofcmembers1.state_id" (onChange)="populateCity($event)"></p-dropdown>
+          <p-dropdown [style]="{width:'90%'}" [options]="drpCityId" [(ngModel)]="ofcmembers1.city_id"></p-dropdown>
+
+          <div class="logmod-checkbox">
+             
+            <p-checkbox name="group2" [(ngModel)]="selectedTermsConditions1"  class="mycheckbox"  label="Terms & Conditions" value="Terms & Conditions"></p-checkbox>
+          </div>
+          <button class="button-center button-center-full-size" pButton (click)="onSubmitIndividual()" type="button" label="Register"></button>
+      
+      </div>
+    </div>
+  </div>
+</div>

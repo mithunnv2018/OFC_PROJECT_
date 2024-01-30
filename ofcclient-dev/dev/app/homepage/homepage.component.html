@@ -1,0 +1,386 @@
+     <!--Banner block Starts -->
+ <div class="banner">
+ 	<img src="resources/ofc/images/ofc-banner.jpg" width="100%" alt="ofc-banner">
+    <!--<div class="start-btn"> Get Started
+    </div>-->                                                                   <!----------------Get Start block ends-------------------->
+
+ </div><!--Banner block Ends-->
+
+<div class="container">														<!----------------Container block Starts-------------------->
+<h1> <span>Let's get started!</span> </h1>
+		
+        <div class="left-block">
+        
+        	<h2> For Buyer</h2>
+            <img src="resources/ofc/images/buyer.png" alt="Buyer">
+            <p> Post Your Requirement</p>
+            <p> Find Services</p>
+            <div class="button-block " ><button class="button-center">Hier Now</button></div>
+       
+		</div>
+         
+        <div class="vertical-parition">
+        		<img src="resources/ofc/images/or-verticle.png">
+        </div>
+        <div class="horizontal-parition">
+        		<img src="resources/ofc/images/or-horizontal.png">
+        </div>
+        
+        <div class="right-block">
+            
+        	<h2>For Seller</h2>
+            <img src="resources/ofc/images/seller.png" alt="Buyer">
+            <p> Post Your Services</p>
+            <p> Find Offer From China</p>
+            <div class="button-block " ><button class="button-center">Work Now</button></div>
+      
+		</div>
+<div class="clear-div"></div>
+</div>							 <!-- Container block Ends --> 
+
+<div class="container" *ngIf="popularsearchhomepage">
+    <!-- Container block Starts second -->
+    <h1> <span>Popular Search</span> </h1>
+
+    <!-- as done on 18 jan 2016 by Mandar for-->
+    <p-dataGrid [value]="popularsearchhomepage" class="mygridborder">
+        <template let-car>
+            <div class="popular-search-block">
+                <p>{{car.maincat_name}}
+                </p>
+                <img src="{{mybaseurlpopularserviceimages+car.uploadfile_filename}}">
+            </div>
+        </template>
+    </p-dataGrid>
+
+    <!--<div class="popular-search-block">
+
+        <p>{{}}
+            <p>
+                <img src="images/popular-searches-01.png">
+    </div>
+
+    <div class="popular-search-block">
+        <p>Trademarks & Patent
+            <p>
+                <img src="images/popular-searches-02.png">
+    </div>
+
+    <div class="popular-search-block">
+        <p>Telemarketing
+            <p>
+                <img src="images/popular-searches-03.png">
+    </div>
+
+    <div class="popular-search-block">
+        <p>Article Writing
+            <p>
+                <img src="images/popular-searches-04.png">
+    </div>
+
+    <div class="popular-search-block">
+        <p>Factory
+            <p>
+                <img src="images/popular-searches-05.png">
+    </div>
+
+    <div class="popular-search-block">
+        <p>Promotional Videos
+            <p>
+                <img src="images/popular-searches-06.png">
+    </div>-->
+
+
+    <div class="clear-div"></div>
+</div>
+<!-- Container block Ends second -->
+
+
+
+
+<div class="container" *ngIf="popularserviceshomepage"> <!-- if here -->
+    <!-- Container block Starts third -->
+    <h1> <span>Popular Services</span> </h1>
+
+    <!--<div class="popular-services-block1">
+        <ul>
+            <li *ngFor="let items of popularserviceshomepage; let i = index">
+                
+                <img src="{{mybaseurlpopularserviceimages+items.uploadfile_filename}}" width="100%">
+                <div class="popular-services-block-content">
+                    <h4> {{items.uploadfile_actulalfilename}} </h4>
+                    <p> Created By: John William</p>
+                </div>
+            </li>
+        </ul>
+    </div>-->
+
+    <!-- 
+        // commented static images for displaying images from db
+
+    -->
+    
+    <div  class="popular-services-block1" *ngIf="popularserviceshomepage[0]">
+        <img [src]="mybaseurlpopularserviceimages+popularserviceshomepage[0].uploadfile_filename" width="100%">
+        <div class="popular-services-block-content">
+            <h4> Web App Development </h4>
+            <p> Created By: John William</p>
+        </div>
+    </div>
+
+    <div  class="popular-services-block2" *ngIf="popularserviceshomepage[1]">
+        
+        <div  class="popular-services-block2-inner-top">
+            <div class="popular-services-block2-inner">
+                <img src="{{mybaseurlpopularserviceimages+popularserviceshomepage[1].uploadfile_filename}}" width="100%">
+                <div class="popular-services-block-content">
+                    <h4> Web App Development </h4>
+                    <p> Created By: John William </p>
+                </div>
+            </div>
+
+            <div  class="popular-services-block2-inner">
+                <img src="{{mybaseurlpopularserviceimages+popularserviceshomepage[2].uploadfile_filename}}" width="100%">
+                <div class="popular-services-block-content">
+                    <h4> Web App Development </h4>
+                    <p> Created By: John William </p>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div  class="popular-services-block2-inner-middle">
+            <h3> Explore Work Here </h3>
+        </div>
+        
+        
+        
+        <div class="popular-services-block2-inner-top">
+            <div class="popular-services-block2-inner">
+                <img src="{{mybaseurlpopularserviceimages+popularserviceshomepage[3].uploadfile_filename}}" width="100%">
+                <div class="popular-services-block-content">
+                    <h4> Web App Development </h4>
+                    <p> Created By: John William </p>
+                </div>
+            </div>
+
+            <div class="popular-services-block2-inner">
+                <img src="{{mybaseurlpopularserviceimages+popularserviceshomepage[4].uploadfile_filename}}" width="100%">
+                <div class="popular-services-block-content">
+                    <h4> Web App Development </h4>
+                    <p> Created By: John William </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="popular-services-block1" *ngIf="popularserviceshomepage[5]">
+        <img src="{{mybaseurlpopularserviceimages+popularserviceshomepage[5].uploadfile_filename}}" width="100%">
+        <div class="popular-services-block-content">
+            <h4> Web App Development </h4>
+            <p> Created By: John William </p>
+        </div>
+    </div>
+    
+    <div class="clear-div"></div>
+
+
+</div>
+<!-- Container block Ends third -->
+
+
+<div class="container" id="section">
+    <!-- Container block Starts fourth -->
+    <h1> <span>How it Works</span> </h1>
+
+    <div class="how-it-works-block">
+
+        <img src="resources/ofc/images/how-it-works-01.png" alt="Buyer">
+        <h3>For Seller </h3>
+        <p>As Freelancer or Specialist, post your service or find an offer from China of business and life...</p>
+
+    </div>
+
+    <div class="how-it-works-block">
+
+        <img src="resources/ofc/images/how-it-works-02.png" alt="Buyer">
+        <h3>For Buyer</h3>
+        <p>Post your requirements of business and life... to find good local service from overseas</p>
+
+    </div>
+
+    <div class="how-it-works-block">
+
+        <img src="resources/ofc/images/how-it-works-03.png" alt="Buyer">
+        <h3>Work</h3>
+        <p>As Use the OFC platform to chat, share files, and collaborate from your desktop or on the go.</p>
+
+    </div>
+
+    <div class="how-it-works-block">
+
+        <img src="resources/ofc/images/how-it-works-04.png" alt="Buyer">
+        <h3>Payment</h3>
+        <p>Invoicing and payments happen on Upwork. With OFC Protection, only pay for work you authorize.</p>
+
+    </div>
+    <div class="clear-div"></div>
+</div>
+<!-- Container block Ends fourth -->
+
+
+<div class="container"> <!-- if here -->
+    <!-- Container block Starts fifth -->
+    <h1> <span>Pricing & Level </span> </h1>
+
+    <div class="pricing-n-level-left">
+        <p>As Freelancer or Specialist, post your service or find an offer from China of business and life...</p>
+    </div>
+
+    <div class="pricing-n-level-right">
+    <!-- as done on 18 jan 2016 by Mandar for-->
+    <p-dataGrid [value]="plan"  [rows]="0" class="mygridborder">
+    
+    <template let-plan>
+        <div style="padding:3px" class="ui-g-12 ui-md-3">
+            <p-panel [header]="plan.plan_name" [style]="{'text-align':'center'}">
+                <!--<h2>{{}}</h2>-->
+                <h4>{{plan.plan_bidsnos}} Bids/month</h4>
+                <h5>Job Fee {{plan.plan_feespercentage}}%</h5>
+                <h5>Upto {{plan.plan_nosofcategories}} Team Members</h5>
+                <button class="button-center">Buy Now</button>
+                <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your project.</p>
+                
+            </p-panel>
+        </div>
+    </template>
+    </p-dataGrid>
+        <!--<div class="ui-g">
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+            <div class="ui-g-3">3</div>
+        </div>-->
+        <!--<div class="how-it-works-block">
+
+            <h2>OFC Basic</h2>
+            <h4>30 Bids/month</h4>
+            <h5>Job Fee 8.25%</h5>
+            <h5>Upto 10 Team Members</h5>
+            <button class="button-center">Buy Now</button>
+            <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your project.</p>
+
+        </div>
+
+        <div class="how-it-works-block">
+
+            <h2>OFC Professional</h2>
+            <h4>50 Bids/month</h4>
+            <h5>Job Fee 7.25%</h5>
+            <h5>Unlimited Team Members</h5>
+            <button class="button-center">Buy Now</button>
+            <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your project.</p>
+
+        </div>
+
+        <div class="how-it-works-block">
+
+            <h2>OFC Busiess</h2>
+            <h4>100 Bids/month</h4>
+            <h5>Job Fee 6.25%</h5>
+            <h5>Unlimited Team Members</h5>
+            <button class="button-center">Buy Now</button>
+            <p>Browse profiles, reviews, and proposals then interview top candidates. Hire a favorite and begin your project.</p>
+
+        </div>-->
+    </div>
+    <div class="clear-div"></div>
+
+</div>
+<!-- Container block Ends fifth -->
+
+
+<div class="container"> <!-- if here -->
+    <!-- Container block Starts sixth -->
+
+    <div class="testimonial-left">
+        <h2>Testimonial</h2>
+<!-- as done on 18 jan 2016 by Mandar for-->
+        <p-carousel class="mycarouseltitle" [value]="testimonial" numVisible="1" circular="circular" autoplayInterval="3000">
+            <template let-testimonial>
+                <span class="left"><img src="resources/ofc/images/in-comma.png"> </span>
+                <p> {{testimonial.testimonial_description}}</p>
+                <span class="right"><img src="resources/ofc/images/out-comma.png"></span>
+                <h4>- {{testimonial.testimonial_name}}</h4>
+            </template>
+        </p-carousel>
+        <!--<span class="left"><img src="resources/ofc/images/in-comma.png"></span>
+        <p>Notepad is a basic text-editing program and it's most commonly used to view or edit text files. A text file is a
+            file type typically identified by the .txt file name extension. To find or replace only text that matches the
+            use of uppercase and lowercase characters specified in the Find what box, select the Match case check box.
+        </p>
+        <span class="right"><img src="images/out-comma.png"></span>
+        <h4>- Tom Hanks</h4>-->
+    </div>
+
+    <div class="testimonial-right">
+        <h2>OFC Video</h2>
+        <div class="ofc-video">
+            <img src="resources/ofc/images/video-img.jpg" width="100%">
+        </div>
+    </div>
+    <div class="clear-div"></div>
+</div>
+<!-- Container block Ends sixth -->
+
+<div class="top-brands-container">
+    <div class="top-brands-container-inner">
+        <!-- Container block Starts seventh -->
+        <h1>Top Brands</h1>
+
+        <div class="top-brands">
+            <img src="resources/ofc/images/top-brand-01.png" width="100%">
+        </div>
+        <div class="top-brands">
+            <img src="resources/ofc/images/top-brand-02.png" width="100%">
+        </div>
+        <div class="top-brands">
+            <img src="resources/ofc/images/top-brand-03.png" width="100%">
+        </div>
+        <div class="top-brands">
+            <img src="resources/ofc/images/top-brand-04.png" width="100%">
+        </div>
+        <div class="top-brands">
+            <img src="resources/ofc/images/top-brand-05.png" width="100%">
+        </div>
+    </div>
+    <!--<div class="top-brands">
+          <img src="images/top-brand-01.png">
+          <img src="images/top-brand-02.png">
+          <img src="images/top-brand-03.png">
+          <img src="images/top-brand-04.png">
+          <img src="images/top-brand-05.png">
+		</div>-->
+
+    <div class="clear-div"></div>
+
+</div>
+<!-- Container block Ends seventh -->
+
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>
+
+<div class="follow-us-container">														<!----------------Container block Starts ninth-------------------->
+	<h1>Follows Us</h1>
+        <div class="follow-us">
+          <img src="resources/ofc/images/twitter.png">
+          <img src="resources/ofc/images/youtube.png">
+          <img src="resources/ofc/images/facebook.png">
+          <img src="resources/ofc/images/google+.png">
+          <img src="resources/ofc/images/linkdin.png">
+		</div>
+       
+    <div class="clear-div"></div>	
+        
+</div>									<!----------------Container block Ends ninth--------------------> 
+

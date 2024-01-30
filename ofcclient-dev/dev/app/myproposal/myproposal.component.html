@@ -1,0 +1,248 @@
+<sd-commonsubmenu [pagetype]="'myproposal'"></sd-commonsubmenu>
+
+<div class="freelancer-container">
+    <button style="float:right;background-color:#f17023" pButton type="button" (click)="onclickSubmitProposal()" label="Submit Proposal"></button>
+
+<div class="proposal">
+    <h2>{{myproposal.ofcprojectpost_title}}</h2>
+    <div class="proposal-row">
+        <div class="proposal-cols">
+            <h3>Experience Level</h3>
+            <p>Entry Level (Coins)</p>
+        </div>
+
+        <div class="proposal-cols">
+            <h3>Job Duration</h3>
+            <p>More than 6 months</p>
+        </div>
+
+        <div class="proposal-cols">
+            <h3>About Client</h3>
+            <p>Payment Method Verified</p>
+        </div>
+
+        <div class="proposal-cols">
+            <h3>Job Posted</h3>
+            <p>4 Job Posted</p>
+        </div>
+
+        <div class="proposal-cols">
+            <h3>Successful Jobs Rate</h3>
+            <p>10% Hire Rate</p>
+        </div>
+
+        <div class="proposal-cols">
+            <h3>Client Active</h3>
+            <p>Since Dec 6, 2015</p>
+        </div>
+
+    </div>
+    <!-- end of proposal-row -->
+
+    <div class="proposal-description">
+        <h3>Job Description</h3>
+        <p>{{myproposal.ofcprojectpost_description}}</p>
+
+        <div class="freelancer-col-2-details">
+            <label>Skills Required </label>
+            <div [innerHTML]="getSkillList(myproposal.filearr)"></div>
+        </div>
+    </div>
+    <!-- end of proposal description -->
+
+</div>
+</div>
+<!-- end of freelancer-container-->
+
+
+
+
+<div class="freelancer-container" *ngIf="showDetails">
+    <div class="proposal">
+        <h2>{{myproposal.ofcprojectpost_title}}</h2>
+        <p><b>You are submitting proposal as a Freelancer</b></p>
+
+        <div class="proposal-terms">
+            <div class="proposal-terms-col">
+                <h3>Proposal Rate</h3>
+                <p>This is the amount the client will see on your proposal</p>
+            </div>
+            <div class="proposal-terms-col">
+                <!-- <input type="text" placeholder="12450"> <span>coins</span> -->
+                <input type="text" pInputText placeholder="12450" [(ngModel)]="submitproposal.ofcsubmitproposal_budget" (blur)="calcCommissionAmount($event)"><span>coins</span>
+            </div>
+            <div style="clear:both"></div>
+</div>
+
+<div class="proposal-terms">
+    <div class="proposal-terms-col">
+        <h3>{{submitproposal.ofcsubmitproposal_commissionpercentage}}% OFC</h3>
+        <p>Service Fee</p>
+    </div>
+    <div class="proposal-terms-col">
+        <!--  <input type="text" placeholder="3000"> <span>coins</span> -->
+        <input type="text" pInputText placeholder="3000" [(ngModel)]="submitproposal.ofcsubmitproposal_commissionamount"><span>coins</span>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<div class="proposal-terms">
+    <div class="proposal-terms-col">
+        <h3>You'll Receive</h3>
+        <p>The estimated amount you'll receive after service fees.</p>
+    </div>
+    <div class="proposal-terms-col">
+        <!--   <input type="text" placeholder="1200"> <span>coins</span> -->
+        <input type="text" pInputText placeholder="1200" [(ngModel)]="submitproposal.ofcsubmitproposal_finalamount"><span>coins</span>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<!-- as done on 21 jan 2017 by Mandar for time frame n time commitment-->
+<div class="employee-after-login-details">
+    <!--<h3>How many freelancers do you need to hire?</h3>-->
+    <h3>How much time duration do you need?</h3>
+
+
+
+
+
+
+
+
+
+    <div class="popular-search-block" (click)="selectTimeFrame('1 Day or Few Hours')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='1 Day or Few Hours'}">
+        <p> 1 Day or </p>
+        <p>Few Hours</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Week')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='3 to 6 Week'}">
+        <p> 3 to 6 </p>
+        <p>Week</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('Less than 1 Month')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='Less than 1 Month'}">
+        <p> Less than </p>
+        <p>1 Month</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('1 to 3 Months')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='1 to 3 Months'}">
+        <p> 1 to 3 </p>
+        <p>Months</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('3 to 6 Months')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='3 to 6 Months'}">
+        <p> 3 to 6 </p>
+        <p>Months</p>
+    </div>
+
+    <div class="popular-search-block" (click)="selectTimeFrame('More than 6 Months')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_timeframe=='More than 6 Months'}">
+        <p> More than </p>
+        <p>6 Months</p>
+    </div>
+
+</div>
+
+<div class="employee-after-login-details" style="width:100%">
+<h3>What time commitment is require for this job </h3>
+
+<!--<div class="skills"> <span> More than 3 months </span> <img src="resources/ofc/images/time-select.png" width="10%" style="vertical-align:middle;"> </div>-->
+<div class="popular-search-block desired-experience-level" (click)="selectCommitment('More than 30 hours / week')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_availability=='More than 30 hours / week'}">
+    <span>More than 30 hours / week </span>
+    <img src="resources/ofc/images/time-select.png" style="vertical-align:middle">
+</div>
+<div class="popular-search-block desired-experience-level" (click)="selectCommitment('Less than 30 hours / week')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_availability=='Less than 30 hours / week'}">
+    <span> Less than 30 hours / week</span>
+    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+</div>
+<div class="popular-search-block desired-experience-level" (click)="selectCommitment('I don\'t know yet')" [ngClass]="{'popular-active': submitproposal.ofcsubmitproposal_availability=='I don\'t know yet'}">
+    <span>I don't know yet</span>
+    <img src="resources/ofc/images/time.png" style="vertical-align:middle">
+</div>
+</div>
+
+
+<div class="employee-after-login-details">
+    <h3>Cover Letter</h3>
+
+    <textarea pInputTextarea class="post-job-textarea" rows="10" [(ngModel)]="submitproposal.ofcsubmitproposal_coverletter">Over the last 7 years I have been involved in several performance-sensitive projects using Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.
+            </textarea>
+
+    <div class="characters-left">
+        <p> 1000 characters left </p>
+    </div>
+</div>
+
+<div class="employee-after-login-details">
+    <h3>Terms</h3>
+
+    <textarea pInputTextarea class="post-job-textarea" rows="10" [(ngModel)]="submitproposal.ofcsubmitproposal_terms">Over the last 7 years I have been involved in several performance-sensitive projects using Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.
+            </textarea>
+
+    <div class="characters-left">
+        <p> 1000 characters left </p>
+    </div>
+</div>
+<!-- end of employee-after-login-details -->
+<div *ngFor="let item of projectpostquestionsArr,let i=index">
+    <div class="employee-after-login-details">
+        <h3>{{item.projectpostquestions_name}}</h3>
+        <textarea pInputTextarea class="post-job-textarea" rows="10" [(ngModel)]="arranswer[i]" placeholder="Enter Answer" (change)="addPostQuestAnswer($event,arranswer[i],item.projectpostquestions_name)">Over the last 7 years I have been involved in several performance-sensitive projects using 
+        <!--<textarea pInputTextarea class="post-job-textarea" rows="10" [(ngModel)]="arranswer[i]" placeholder="Enter Answer" >Over the last 7 years I have been involved in several performance-sensitive projects using -->
+            Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.
+            </textarea>
+
+        <div class="characters-left">
+            <p> 1000 characters left </p>
+        </div>
+    </div>
+</div>
+<!-- end of employee-after-login-details -->
+
+<!--<div class="employee-after-login-details">
+    <h3>Why do you think you are a good fit for this particular project?</h3>
+    <textarea pInputTextarea class="post-job-textarea" rows="10">Over the last 7 years I have been involved in several performance-sensitive projects using Java, including video surveillance solution and stock trade automation system. My core competency is performance optimization, and I'm seeking the opportunities to enhance your application to run as smooth as possible.
+            </textarea>
+
+    <div class="characters-left">
+        <p> 1000 characters left </p>
+    </div>
+</div>-->
+<!--- end of employee-after-login-details -->
+
+<div class="acc-attachment">
+    <h3>
+        <img src="resources/ofc/images/attachment.png" style="vertical-align:middle;"> <span>Attach file</span></h3>
+ <p-fileUpload class="myfileupload"  name="files" url="{{mybaseurl}}fileupload/multiplefiles"  (onUpload)="onUpload($event)">
+                    <template pTemplate type="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </template>
+                </p-fileUpload>
+                <ul *ngIf="fileuploadarr.length">
+                    <li *ngFor="let file1 of fileuploadarr">{{file1.fileName}}</li>
+                </ul>
+</div>
+<!-- as done on 21 jan 2016 by Mandar for estimate start data-->
+<div class="employee-after-login-details">
+    <h3>Start Date</h3>
+    <p-calendar [(ngModel)]="submitproposal.ofcsubmitproposal_estimatestartdate" dateFormat="mm/dd/yy" ></p-calendar>
+</div>
+
+
+</div>
+<!--- end of proposal -->
+</div>
+<!-- end of freelancer-container-->
+
+
+<div class="container">
+    <div class="for-button">
+        <div class="post-btn" (click)="onSubmit()"><a href="javascript:void(0);">Submit Now</a></div>
+        <!--<div class="post-btn" (click)="onSubmit()"><a href="freelancer-page-submit-proposal.html">Submit Now</a></div>-->
+        <p-messages [value]="msgs"></p-messages>
+    </div>
+    <div style="clear:both"></div>
+</div>
+<sd-commonbrowsetopskills></sd-commonbrowsetopskills>

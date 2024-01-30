@@ -1,0 +1,33 @@
+ <div class="popular-services-block1">
+        	<div class="left-block2 left-block2-heading">
+          		<h2>Setting</h2>
+			</div>
+              
+             <div class="left-block2">
+             <h3>Billing Method hii{{pagetype}}</h3>
+             <nav class="labels">
+          		<ul>
+                    <li> <a [routerLink]="['/membershipcoins']" [ngClass]="{active: pagetype=='membershipcoins'}"  >Membership & Coins</a></li>
+                    <li> <a [routerLink]="['/taxinformation']" [ngClass]="{active: pagetype=='taxinformation'}">Tax Information</a></li>
+                    <li> <a [routerLink]="['/workallocation']" [ngClass]="{active: pagetype=='workallocation'}">Work Allocation</a></li>
+                    <li> <a [routerLink]="['/joblist']" [ngClass]="{active: pagetype=='joblist'}">Job List</a></li>
+                    <li> <a [routerLink]="['/postajobreports']" [ngClass]="{active: pagetype=='postajobreports'}">Post A Job Reports</a></li>
+                    <li> <a [routerLink]="['/purchasecoins']" [ngClass]="{active: pagetype=='purchasecoins'}">Purchase Coins</a></li>
+                    <li> <a [routerLink]="['/submitproposal']" [ngClass]="{active: pagetype=='submitproposal'}">Submit Proposal</a></li>
+                    </ul>
+                </nav>
+			</div>
+            <div class="left-block2">
+            <h3>User Setting</h3>
+            <nav class="labels">
+          		<ul>
+                    <li> <a [routerLink]="['/contactinfo']" [ngClass]="{active: pagetype=='contactinfo'}">Contact Info</a></li>
+                    <li> <a [routerLink]="['/myprofile']" [ngClass]="{active: pagetype=='myprofile'}">My Profile</a></li>
+                    <li> <a [routerLink]="['/changepassword']" [ngClass]="{active: pagetype=='changepassword'}">Change Password</a></li>
+                    <li> <a [routerLink]="['/securityquestion']" [ngClass]="{active: pagetype=='securityquestion'}">Change Secutity Question</a></li>
+                    <li> <a [routerLink]="['/privacypolicy']" [ngClass]="{active: pagetype=='privacypolicy'}"  >Privacy Policy</a></li>
+                
+                </ul>
+                </nav>
+			</div>
+        </div>

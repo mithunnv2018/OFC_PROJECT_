@@ -1,0 +1,78 @@
+                                                                            
+<div class="filter-container">
+   <!-- <div class="row">-->
+        <h2>Open Job Reports</h2>
+    <!--</div>
+    <div style="clear:both"></div>-->
+</div>
+
+
+
+<div class="freelancer-container">
+
+	 
+	<div class="report-table">	
+
+
+<!-- <p-dataTable [value]="postajobreportGrid" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelect($event)"
+        [(selection)]="selectedRow">
+        <p-column field="ofcprojectpost_title" [filter]="true" class="report-details" filterPlaceholder="Job Title" header="Job Title"></p-column>
+        <p-column field="" [filter]="true" class="report-details" filterPlaceholder="Offers" header="Offers"></p-column>
+        <p-column field="" [filter]="true" class="report-details" filterPlaceholder="Messages" header="Messages"></p-column>
+        <p-column field="" [filter]="true" class="report-details" filterPlaceholder="Hires" header="Hires"></p-column>
+	    <p-column field="" [filter]="true" class="report-details" filterPlaceholder="Status" header="Status"></p-column>
+        <p-column field="" [filter]="true" class="report-details" filterPlaceholder="Action" header="Action"></p-column>
+     
+	 </p-dataTable>-->
+
+
+
+
+	<table>
+		<thead>
+		<tr>
+			<th>Job Title</th>
+			<th>Offers</th>
+			<th>Messages</th>
+			<th>Hire</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="report-details" *ngFor="let postajobreport of postajobreportGrid" (click)="onRowSelect(postajobreport.ofcprojectpost_id)">
+			<td>
+            	<h3>{{postajobreport.ofcprojectpost_title}}</h3>
+                <p>Fixed Coins</p>
+                <p class="report-view">View Suggested Buyer</p>
+            </td>
+			<td>--</td>
+			<td>--</td>
+			<td>--</td>
+			<td>--</td>
+			<td>--</td>
+		</tr>
+        
+		
+		</tbody>
+	</table>
+
+
+
+	<p>View closed / finished jobs</p>
+	</div>
+    
+<div style="clear:both"></div>
+</div>
+
+<!----- end of freelancer-container---->
+
+
+
+<div class="container">
+    <div class="for-button">
+        <div class="post-btn"><a href="javascript:void(0);">View Transaction History</a></div>
+    </div> 
+  <div style="clear:both"></div>
+</div>
+  
